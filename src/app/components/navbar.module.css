@@ -33,12 +33,24 @@
     width: 2px;
     height: 2rem;
     background-color: white;
-    opacity: 0.7;
+    opacity: 1;
 }
 
 .list li a{
     font-size: xx-large;
     font-weight: bold;
+    border: 2px transparent;
+    border-radius: 2px;
+    padding: 0.2rem 1rem;
+}
+.active a{
+    background-color: white;
+    color: #010416;
+    font-size: xx-large;
+    font-weight: bold;
+    border: 2px white;
+    border-radius: 2px;
+    padding: 0.2rem 1rem;
 }
 
 .contact h1{
