@@ -58,64 +58,30 @@ export default function Dropbox() {
         setUrl("");
     };
 
-    return (
-        <>
-            {/* 🔹 Full-page dim overlay */}
-            {isDragging && <div className={styles.dragOverlay}>Drop file anywhere to upload</div>}
+    return ( <> {} {isDragging && <div className={styles.dragOverlay}>Drop file anywhere to upload</div>}
 
             <div className={styles.container}>
-                <div className={styles.dropbox}>
-                    {/* Hide dropbox contents when popup is open */}
-                    {!showUrlInput && (
+                <div className={styles.dropbox}> {} {!showUrlInput && (
                         <div className={styles.content}>
-                            <label className={styles.selectBtn}>
-                                Upload Stream
-                                <input
-                                    type="file"
-                                    className={styles.hiddenInput}
-                                    onChange={handleFileChange}
-                                />
+                            <label className={styles.selectBtn}>Upload Stream
+                                <input type="file" className={styles.hiddenInput} onChange={handleFileChange}/>
                             </label>
-                            <p className={styles.text}>
-                                or drop a file below <br />
-                                paste a URL{" "}
-                                <button
-                                    type="button"
-                                    className={styles.linkBtn}
-                                    onClick={() => setShowUrlInput(true)}
-                                >
+                            <p className={styles.text}>or drop a file below <br />paste a URL{" "}
+                                <button type="button" className={styles.linkBtn} onClick={() => setShowUrlInput(true)}>
                                     here
                                 </button>
                             </p>
                         </div>
                     )}
 
-                    {/* 🔹 Popup with transition */}
-                    <div
-                        className={`${styles.popupBox} ${
-                            showUrlInput ? styles.show : styles.hide
-                        }`}
-                    >
+                    {}
+                    <div className={`${styles.popupBox} ${showUrlInput ? styles.show : styles.hide}`}>
                         <form onSubmit={handleUrlSubmit} className={styles.popupForm}>
-                            <input
-                                type="text"
-                                className={styles.urlInput}
-                                placeholder="Enter stream link"
-                                value={url}
-                                onChange={(e) => setUrl(e.target.value)}
-                                autoFocus
-                            />
+                            <input type="text" className={styles.urlInput} placeholder="Enter stream link" value={url}
+                                onChange={(e) => setUrl(e.target.value)} autoFocus/>
                             <div className={styles.buttonGroup}>
-                                <button
-                                    type="button"
-                                    className={styles.cancelBtn}
-                                    onClick={handleCancel}
-                                >
-                                    Cancel
-                                </button>
-                                <button type="submit" className={styles.submitBtn}>
-                                    Add
-                                </button>
+                                <button type="button" className={styles.cancelBtn} onClick={handleCancel}>Cancel</button>
+                                <button type="submit" className={styles.submitBtn}>Add</button>
                             </div>
                         </form>
                     </div>

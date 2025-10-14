@@ -12,19 +12,22 @@
     gap: 32px;
     flex: 1;
     width: 100%;
-    padding: 0 60px; /* ← horizontal spacing for main content only */
-    box-sizing: border-box; /* ensure padding doesn’t break layout */
+    padding: 0 80px;
+    box-sizing: border-box;
 }
 
 .welcome {
     flex: 2;
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
 }
+.welcomeText{
 
+}
 .welcome h1 {
-    font-size: 2rem;
+    font-size: 4rem;
     text-align: center;
 }
 
@@ -42,12 +45,11 @@
     flex-wrap: wrap;
 }
 
-/* Responsive: stack and adjust padding */
 @media (max-width: 768px) {
     .main {
         flex-direction: column;
         gap: 24px;
-        padding: 0 32px; /* reduce horizontal spacing on smaller screens */
+        padding: 0 32px;
     }
 
     .welcome, .dropbox-container {
