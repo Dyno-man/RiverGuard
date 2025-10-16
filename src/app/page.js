@@ -6,10 +6,17 @@ import Image from "next/image";
 import styles from "./page.module.css";
 import Navbar from "@/app/components/navbar.js";
 import Dropbox from "@/app/components/dropbox.js";
+import User from "@/app/components/userState.js";
 import Login from "@/app/components/login.js";
+import Signup from "@/app/components/signup.js";
 
 export default function Home() {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
+    const [activeModal, setActiveModal] = useState(null); // null | 'login' | 'signup'
+
+    const handleLoginClick = () => setActiveModal('login');
+    const handleSignupClick = () => setActiveModal('signup');
+    const handleCloseOverlay = () => setActiveModal(null);
 
     useEffect(() => {
         // Check if a token exists in localStorage
@@ -28,12 +35,32 @@ export default function Home() {
                     </div>
                 </div>
                 <div className={styles["dropbox-container"]}>
-                    {/* 🔹 Conditionally render Login or Dropbox */}
                     {isLoggedIn ? (
                         <Dropbox />
                     ) : (
-                        <Login onLoginSuccess={() => setIsLoggedIn(true)} />
+                        <User
+                             onLogin={handleLoginClick}
+                             onSignup={handleSignupClick}
+                        />
                     )}
+                    {activeModal === 'login' && (
+                    <div className={styles.overlay} onClick={handleCloseOverlay}>
+                        <div onClick={(e) => e.stopPropagation()} className={styles.modalWrapper}>
+                            <Login onLoginSuccess={() => { setActiveModal(null); setIsLoggedIn(true); }} />
+                        </div>
+                    </div>
+                )}
+
+                    {activeModal === 'signup' && (
+                        <div className={styles.overlay} onClick={handleCloseOverlay}>
+                            <div onClick={(e) => e.stopPropagation()} className={styles.modalWrapper}>
+                                <Signup onSignupSuccess={() => setActiveModal(null)} />
+                            </div>
+                        </div>
+                    )}
+
+
+
                 </div>
             </main>
             <footer className={styles.footer}>

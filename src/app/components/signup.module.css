@@ -1,17 +1,9 @@
-.container {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    height: 60vh;
-    position: relative;
-}
 
-/* Matching dropbox sizing and colors */
-.loginBox {
+/* Matching box design */
+.signupBox {
     border: 2px solid white;
-    height: 25vw;
-    width: 25vw;
+    height: 60vh;
+    width: 60vh;
     border-radius: 10px;
     background-color: #3696ac;
     display: flex;
@@ -26,7 +18,7 @@
 .title {
     font-size: 2rem;
     font-weight: 600;
-    margin-bottom: 2rem;
+    margin-bottom: 1.5rem;
 }
 
 .form {
@@ -52,7 +44,7 @@
     color: #6b6b6b;
 }
 
-.loginBtn {
+.signupBtn {
     background-color: white;
     color: #010416;
     padding: 10px 25px;
@@ -64,7 +56,7 @@
     transition: background-color 0.2s ease;
 }
 
-.loginBtn:hover {
+.signupBtn:hover {
     background-color: #010416;
     color: white;
 }
@@ -89,4 +81,3 @@
 .closeBtn:hover {
     color: #010416;
 }
-

@@ -1,0 +1,68 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 60vh;
+    position: relative;
+}
+
+/* Box matches dropbox dimensions */
+.authBox {
+    border: 2px solid white;
+    height: 25vw;
+    width: 25vw;
+    border-radius: 10px;
+    background-color: #3696ac;
+    color: white;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    position: relative;
+    overflow: hidden;
+}
+
+/* Top and Bottom Halves */
+.topHalf,
+.bottomHalf {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+/* Divider line between halves */
+.divider {
+    height: 1px;
+    width: 90%;
+    background-color: rgba(255, 255, 255, 0.8);
+    align-self: center;
+}
+
+/* Text styling */
+.text {
+    font-size: 1.2rem;
+    font-weight: 500;
+    margin-bottom: 12px;
+}
+
+/* Main buttons (for both login & signup) */
+.mainBtn {
+    background-color: white;
+    color: #010416;
+    padding: 15px 30px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-size: 1.2rem;
+    font-weight: 600;
+    transition: background-color 0.2s ease;
+    border: none;
+    margin-bottom: 2rem; /* 🔹 Added extra space under buttons */
+}
+
+.mainBtn:hover {
+    background-color: #010416;
+    color: white;
+}

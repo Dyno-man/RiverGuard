@@ -7,7 +7,6 @@
     position: relative;
 }
 
-/* 🔹 Full-page dimming overlay */
 .dragOverlay {
     position: fixed;
     top: 0;

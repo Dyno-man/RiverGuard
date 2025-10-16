@@ -1,6 +1,7 @@
-import Image from "next/image";
+"use client";
 import styles from "./page.module.css";
 import Navbar from "@/app/components/navbar.js";
+import Signup from "@/app/components/signup.js";
 
 export default function Stats(){
     return(
@@ -8,7 +9,7 @@ export default function Stats(){
             < Navbar/>
             <main>
                 <div className={styles.text}>
-
+                    <Signup />
                 </div>
             </main>
         </div>

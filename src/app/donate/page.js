@@ -1,11 +1,14 @@
+
 import styles from "./page.module.css";
 import Navbar from "@/app/components/navbar.js";
+import Signup from "@/app/components/signup.js";
 
 export default function Donate(){
     return(
         <div className={styles.page}>
             < Navbar/>
             <main>
+                <Signup />
                 <div className={styles.text}>
 
                 </div>
