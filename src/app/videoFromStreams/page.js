@@ -1,7 +1,7 @@
 'use client';
 import { useState } from 'react';
 
-const WORKER = process.env.NEXT_PUBLIC_WORKER_URL || 'http://localhost:8080';
+const WORKER = process.env.NEXT_PUBLIC_WORKER_URL || 'http://192.155.92.114';
 const KEY    = process.env.NEXT_PUBLIC_WORKER_API_KEY || '';
 
 export default function Home() {
