@@ -2,7 +2,7 @@
 
 import styles from "@/app/components/userState.module.css";
 
-export default function AuthPrompt({ onLogin, onSignup }) {
+export default function userState({ onLogin, onSignup }) {
     return (
         <div className={styles.container}>
             <div className={styles.authBox}>

@@ -7,7 +7,6 @@
     position: relative;
 }
 
-/* Box matches dropbox dimensions */
 .authBox {
     border: 2px solid white;
     height: 25vw;
@@ -23,7 +22,6 @@
     overflow: hidden;
 }
 
-/* Top and Bottom Halves */
 .topHalf,
 .bottomHalf {
     flex: 1;
@@ -33,7 +31,6 @@
     justify-content: center;
 }
 
-/* Divider line between halves */
 .divider {
     height: 1px;
     width: 90%;
@@ -41,14 +38,12 @@
     align-self: center;
 }
 
-/* Text styling */
 .text {
     font-size: 1.2rem;
     font-weight: 500;
     margin-bottom: 12px;
 }
 
-/* Main buttons (for both login & signup) */
 .mainBtn {
     background-color: white;
     color: #010416;
@@ -59,7 +54,7 @@
     font-weight: 600;
     transition: background-color 0.2s ease;
     border: none;
-    margin-bottom: 2rem; /* 🔹 Added extra space under buttons */
+    margin-bottom: 2rem;
 }
 
 .mainBtn:hover {

@@ -19,7 +19,7 @@ export default function Login({ onLoginSuccess }) {
         // } else {
         //     setError("Invalid credentials. Please try again.");
         // }
-        // 🔹 TEMPORARY TEST LOGIN (accepts any credentials)
+        
         localStorage.setItem("abc", "123");
         onLoginSuccess?.();
 

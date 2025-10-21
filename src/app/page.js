@@ -12,21 +12,27 @@ import Signup from "@/app/components/signup.js";
 
 export default function Home() {
     const [isLoggedIn, setIsLoggedIn] = useState(false);
-    const [activeModal, setActiveModal] = useState(null); // null | 'login' | 'signup'
-
-    const handleLoginClick = () => setActiveModal('login');
-    const handleSignupClick = () => setActiveModal('signup');
-    const handleCloseOverlay = () => setActiveModal(null);
+    const [activeModal, setActiveModal] = useState(null);
 
     useEffect(() => {
-        // Check if a token exists in localStorage
         const token = localStorage.getItem("authToken");
         if (token) setIsLoggedIn(true);
     }, []);
 
+    const handleAuthClick = () => {
+        if (isLoggedIn) {
+            setIsLoggedIn(false);
+            localStorage.removeItem("authToken");
+        } else {
+            setActiveModal("login");
+        }
+    };
+
+    const closeModal = () => setActiveModal(null);
+
     return (
         <div className={styles.page}>
-            <Navbar />
+            <Navbar isLoggedIn={isLoggedIn} onAuthClick={handleAuthClick}/>
             <main className={styles.main}>
                 <div className={styles.welcome}>
                     <h1>UP WITH GUARD <br />DOWN WITH TRASH</h1>
@@ -39,22 +45,22 @@ export default function Home() {
                         <Dropbox />
                     ) : (
                         <User
-                             onLogin={handleLoginClick}
-                             onSignup={handleSignupClick}
+                             onLogin={handleAuthClick}
+                             onSignup={() => setActiveModal("signup")}
                         />
                     )}
                     {activeModal === 'login' && (
-                    <div className={styles.overlay} onClick={handleCloseOverlay}>
-                        <div onClick={(e) => e.stopPropagation()} className={styles.modalWrapper}>
-                            <Login onLoginSuccess={() => { setActiveModal(null); setIsLoggedIn(true); }} />
+                        <div className={styles.overlay} onClick={closeModal}>
+                           <div onClick={(e) => e.stopPropagation()} className={styles.modalWrapper}>
+                                <Login onLoginSuccess={() => { closeModal(); setIsLoggedIn(true); }} />
+                            </div>
                         </div>
-                    </div>
-                )}
+                    )}
 
                     {activeModal === 'signup' && (
-                        <div className={styles.overlay} onClick={handleCloseOverlay}>
+                        <div className={styles.overlay} onClick={closeModal}>
                             <div onClick={(e) => e.stopPropagation()} className={styles.modalWrapper}>
-                                <Signup onSignupSuccess={() => setActiveModal(null)} />
+                                <Signup onSignupSuccess={closeModal} />
                             </div>
                         </div>
                     )}
