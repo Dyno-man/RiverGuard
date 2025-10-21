@@ -1,7 +1,7 @@
 'use client';
 import { useState } from 'react';
 
-const WORKER = process.env.NEXT_PUBLIC_WORKER_URL || 'http://192.155.92.114:80';
+const WORKER = process.env.NEXT_PUBLIC_WORKER_URL || 'http://192.155.92.114';
 const KEY    = process.env.NEXT_PUBLIC_WORKER_API_KEY || '';
 
 export default function Home() {
@@ -24,9 +24,8 @@ export default function Home() {
                 const fd = new FormData();
                 fd.append('file', file);
                 fd.append('t', String(t));
-                res = await fetch(`${WORKER}/frame`, {
+                res = await fetch(`${WORKER}/ingest-file`, {
                     method: 'POST',
-                    headers: { 'x-api-key': KEY },      // include dev key
                     body: fd
                 });
             } else {

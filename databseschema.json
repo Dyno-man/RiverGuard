@@ -1,0 +1,32 @@
+{
+  "collections": {
+    "streams": {
+      "description": "RTMP stream configurations and status",
+      "fields": {
+        "url": "string",
+        "streamID": "string", 
+        "keepFrames": "boolean",
+        "status": "string",
+        "createdAt": "timestamp",
+        "lastHealthCheck": "timestamp"
+      }
+    },
+    "videos": {
+      "description": "Video metadata and processing information",
+      "fields": {
+        "title": "string",
+        "uploadedAt": "timestamp", 
+        "lengthSeconds": "number",
+        "TimeFrames": "number",
+        "location": "string"
+      }
+    },
+    "outputData": {
+      "description": "Trash detection analysis results for a video",
+      "fields": {
+        "videoId": "string",
+        "dataPoints": "array of {time: number, trashPerFrame: number}"
+      }
+    }
+  }
+}
