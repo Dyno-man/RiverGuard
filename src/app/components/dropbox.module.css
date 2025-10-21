@@ -1,3 +1,4 @@
+
 .container {
     display: flex;
     flex-direction: column;
@@ -9,10 +10,7 @@
 
 .dragOverlay {
     position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
+    inset: 0;
     background-color: rgba(54, 150, 172, 0.3);
     display: flex;
     align-items: center;
@@ -23,7 +21,6 @@
     text-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
     z-index: 1000;
     pointer-events: none;
-    transition: opacity 0.3s ease;
 }
 
 .dropbox {
@@ -56,7 +53,7 @@
     cursor: pointer;
     font-size: 1.5rem;
     font-weight: 500;
-    transition: background-color 0.2s;
+    transition: 0.2s;
 }
 
 .selectBtn:hover {
@@ -64,9 +61,7 @@
     color: white;
 }
 
-.hiddenInput {
-    display: none;
-}
+.hiddenInput { display: none; }
 
 .text {
     margin-top: 8px;
@@ -85,11 +80,8 @@
     padding: 0;
 }
 
-.linkBtn:hover {
-    color: #010416;
-}
+.linkBtn:hover { color: #010416; }
 
-/* 🔹 Popup animation (fade + scale) */
 .popupBox {
     position: absolute;
     top: 50%;
@@ -138,14 +130,9 @@
     width: 100%;
 }
 
-.urlInput::placeholder {
-    color: #6b6b6b;
-}
+.urlInput::placeholder { color: #6b6b6b; }
 
-.buttonGroup {
-    display: flex;
-    gap: 10px;
-}
+.buttonGroup { display: flex; gap: 10px; }
 
 .submitBtn,
 .cancelBtn {
@@ -156,10 +143,8 @@
     cursor: pointer;
     border: none;
     font-weight: 500;
-    transition: background-color 0.2s;
+    transition: 0.2s;
 }
 
 .submitBtn:hover,
-.cancelBtn:hover {
-    background-color: gray;
-}
+.cancelBtn:hover { background-color: gray; }

@@ -8,22 +8,21 @@
 }
 
 .authBox {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
     border: 2px solid white;
     height: 25vw;
     width: 25vw;
     border-radius: 10px;
     background-color: #3696ac;
     color: white;
-    text-align: center;
-    display: flex;
-    flex-direction: column;
     justify-content: space-between;
     position: relative;
     overflow: hidden;
 }
 
-.topHalf,
-.bottomHalf {
+.subContainer {
     flex: 1;
     display: flex;
     flex-direction: column;
@@ -44,7 +43,7 @@
     margin-bottom: 12px;
 }
 
-.mainBtn {
+.btn {
     background-color: white;
     color: #010416;
     padding: 15px 30px;
@@ -57,7 +56,7 @@
     margin-bottom: 2rem;
 }
 
-.mainBtn:hover {
+.btn:hover {
     background-color: #010416;
     color: white;
 }

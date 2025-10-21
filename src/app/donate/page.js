@@ -7,12 +7,13 @@ export default function Donate(){
     return(
         <div className={styles.page}>
             < Navbar/>
+
             <main>
-                <Signup />
                 <div className={styles.text}>
 
                 </div>
             </main>
+
         </div>
 
     );

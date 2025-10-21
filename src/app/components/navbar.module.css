@@ -9,9 +9,19 @@
     justify-content: space-between;
     width: 100%;
     padding: 0 2rem;
+    position: relative;
 }
 .logo h1{
     margin: 0;
+}
+.list{
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%); /* only horizontal */
+    top: 0;
+    height: 100%; /* fill navbar height */
+    display: flex;
+    align-items: center; /* vertically center the ul inside navbar */
 }
 .list ul{
     display: flex;
@@ -40,7 +50,7 @@
     font-size: xx-large;
     font-weight: bold;
     border: 2px transparent;
-    border-radius: 2px;
+    border-radius: 8px;
     padding: 0.2rem 1rem;
 }
 .active a{

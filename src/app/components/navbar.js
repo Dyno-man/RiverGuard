@@ -42,6 +42,7 @@ export default function Navbar({isLoggedIn, onAuthClick}){
                    <h1>{isLoggedIn ? "Logout" : "Login"}</h1>
                </div>
            </div>
+
        </div>
     );
 }
