@@ -2,7 +2,7 @@
     display: flex;
     flex-direction: column;
     min-height: 100svh;
-    font-family: var(--font-geist-sans);
+    font-family: var(--font-geist-sans), serif;
     gap: 64px;
 }
 
