@@ -28,3 +28,5 @@ app.post('/ingest-file', upload.single('file'), async (req, res) => {
 });
 
 app.listen(4000, () => console.log('Middleware listening on port 4000'));
+
+app.get('/ping', (req, res) => res.json({ ok: true }));
