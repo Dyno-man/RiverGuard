@@ -1,6 +1,6 @@
 
 import styles from "./page.module.css";
-import Navbar from "@/app/components/navbar.js";
+import Navbar from "@/app/components/Navbar/Navbar.js";
 
 export default function About(){
     return(

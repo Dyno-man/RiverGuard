@@ -81,15 +81,3 @@
     transition: all 0.3s ease;
     cursor: pointer;
 }
-.logButton h1{
-    background-color: #010416;
-    color: white;
-    border: 1px solid #010416;
-    border-radius: 10px;
-    padding: 0.3rem 0.8rem;
-}
-.logButton h1:hover{
-    color: #3696AC;
-    transition: all 0.3s ease;
-    cursor: pointer;
-}
