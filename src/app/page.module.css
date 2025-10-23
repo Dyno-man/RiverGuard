@@ -18,7 +18,7 @@
 }
 
 .welcome {
-    flex: 2;
+    flex: 1;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -32,7 +32,7 @@
     text-align: center;
 }
 
-.dropbox-container {
+.howToContainer {
     flex: 1;
     display: flex;
     align-items: center;
@@ -48,32 +48,11 @@
         padding: 0 32px;
     }
 
-    .welcome, .dropbox-container {
+    .welcome, .howToContainer {
         flex: unset;
         width: 100%;
     }
 }
-.overlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    background-color: rgba(1, 4, 22, 0.6); /* dim background */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 1500;
-}
-
-.modalWrapper {
-    background-color: transparent; /* keep wrapper transparent */
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    /* remove width, max-width, padding — let child modal control size */
-}
-
 
 @keyframes fadeInUp {
     from { opacity: 0; transform: translateY(20px); }

@@ -1,7 +1,6 @@
 
 import styles from "./page.module.css";
-import Navbar from "@/app/components/navbar.js";
-import Signup from "@/app/components/signup.js";
+import Navbar from "@/app/components/Navbar/Navbar.js";
 
 export default function Donate(){
     return(

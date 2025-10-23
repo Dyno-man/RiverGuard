@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import styles from "@/app/components/dropbox.module.css";
+import styles from "@/app/components/FileDrop/dropbox.module.css";
 
 export default function Dropbox() {
     const [showUrlInput, setShowUrlInput] = useState(false);
