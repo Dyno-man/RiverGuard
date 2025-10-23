@@ -3,38 +3,36 @@
     flex-direction: column;
     min-height: 100svh;
     font-family: var(--font-geist-sans), serif;
-    gap: 64px;
 }
 
 .main {
     display: flex;
-    flex-direction: row;
+    justify-content: center;
     align-items: center;
-    align-content: center;
-    gap: 32px;
-    flex: 1;
+    gap: 4rem;
     width: 100%;
-    padding: 0 80px;
+    padding: 15rem 5%;
     box-sizing: border-box;
 }
-.text{
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: center;
+
+
+.statBox{
+    border: 2px solid white;
+    height: 30vw;
+    width: 25vh;
+    flex-shrink: 0;
 }
 .streamBox{
-    margin-top: 5%;
     background-color: #010416;
     color: white;
     border: 2px solid white;
     border-radius: 8px;
-    width:50vw;
+    width:60vw;
     height: 30vw;
-    text-align: center;
+    display: flex;
     justify-content: center;
+    align-items: center;
 }
-
 
 .streamBox iframe {
     width: 100%;

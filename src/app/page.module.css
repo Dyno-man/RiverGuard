@@ -3,6 +3,7 @@
     flex-direction: column;
     min-height: 100svh;
     font-family: var(--font-geist-sans);
+    /*font-family: var(--font-montserrat);*/
     gap: 64px;
 }
 
@@ -38,12 +39,7 @@
     justify-content: center;
 }
 
-.footer {
-    display: flex;
-    gap: 24px;
-    justify-content: center;
-    flex-wrap: wrap;
-}
+
 
 @media (max-width: 768px) {
     .main {

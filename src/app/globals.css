@@ -2,6 +2,7 @@
   --background: #040A2C;
   --foreground: #171717;
     --font-geist-sans: "Geist Sans", Arial, sans-serif;
+    /*--font-montserrat: 'Montserrat', Arial, sans-serif;*/
 }
 
 @media (prefers-color-scheme: dark) {

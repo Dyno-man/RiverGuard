@@ -6,11 +6,11 @@ export default function Stats(){
     return(
         <div className={styles.page}>
             < Navbar/>
-            <main>
-                <div className={styles.text}>
+            <main className={styles.main}>
                     <div className={styles.statBox}>
 
                     </div>
+
                     <div className={styles.streamBox}>
                         <iframe
                             width="100%"
@@ -22,7 +22,7 @@ export default function Stats(){
                             title="Dracula Flow: The Official Saga"
                         />
                     </div>
-                </div>
+
             </main>
         </div>
     );

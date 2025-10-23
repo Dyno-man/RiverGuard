@@ -53,6 +53,9 @@
     border-radius: 8px;
     padding: 0.2rem 1rem;
 }
+.list li a:hover{
+    color: #010416;
+}
 .active a{
     background-color: white;
     color: #010416;
