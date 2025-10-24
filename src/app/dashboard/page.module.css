@@ -1,18 +1,62 @@
 
-.page {
-    display: flex;
-    flex-direction: column;
-    min-height: 100svh;
-    font-family: var(--font-geist-sans);
-    gap: 64px;
+.main {
+    height: 53.7vw;
 }
 
-.main {
+.tabs {
     display: flex;
-    flex-direction: row;
-    gap: 32px;
-    flex: 1;
-    width: 100%;
-    padding: 0 80px;
-    box-sizing: border-box;
+    justify-content: center;
+    align-items: center;
+    margin-top: 1vw;
+}
+
+.tab {
+    position: relative;
+    width: 6vw;
+    height: 3vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.tabNumber:hover{
+    background-color: #010416;
+    color: white;
+}
+
+.tabText {
+    width: 95%;
+    height: 95%;
+    border-radius: 2px;
+    border: 1px solid #010416;
+
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-size: 1.5vw;
+    z-index: 1;
+}
+
+
+.active {
+    color: white;
+    background-color: rgba(0.0,0.0,0.0,1.0);
+    color: rgba(0.0,0.0,0.0,1.0);
+    border: #010416
+}
+.divider {
+    height: 1px;
+    width: 98%;
+    background-color: rgba(255, 255, 255, 0.8);
+    align-self: center;
+    margin: 1vw auto;
+}
+.boardView{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 88.5%;
 }

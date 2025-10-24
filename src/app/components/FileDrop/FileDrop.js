@@ -1,9 +1,9 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import styles from "@/app/components/FileDrop/dropbox.module.css";
+import styles from "@/app/components/FileDrop/filedrop.module.css";
 
-export default function Dropbox() {
+export default function FileDrop() {
     const [showUrlInput, setShowUrlInput] = useState(false);
     const [url, setUrl] = useState("");
     const [isDragging, setIsDragging] = useState(false); // full-page drag state
@@ -67,7 +67,7 @@ export default function Dropbox() {
                             <label className={styles.selectBtn}>Upload Stream
                                 <input type="file" className={styles.hiddenInput} onChange={handleFileChange}/>
                             </label>
-                            <p className={styles.text}>or drop a file below <br />paste a URL{" "}
+                            <p className={styles.text}>or drop a file below, <br />paste a URL{" "}
                                 <button type="button" className={styles.linkBtn} onClick={() => setShowUrlInput(true)}>
                                     here
                                 </button>

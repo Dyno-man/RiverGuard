@@ -1,6 +1,22 @@
-.displayStream{
+.main{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100%;
+}
 
+
+.displayStream{
+    border: 2px solid white;
+    border-radius: 8px;
+    width: 55vw;
+    height: 31vw;
+    margin-bottom: 2vw;
 }
 .displayStats{
-
+    border: 2px solid white;
+    border-radius: 8px;
+    width: 35vw;
+    height: 10vw;
 }

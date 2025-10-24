@@ -6,12 +6,19 @@ export default function ViewStats(){
 
     return(
         <div>
-            <div className={styles.displayStream}>
 
-            </div>
-            <div className={styles.displayStats}>
+            <main className={styles.main}>
 
-            </div>
+
+                <div className={styles.displayStream}>
+
+                </div>
+
+                <div className={styles.displayStats}>
+
+                </div>
+            </main>
+
         </div>
     );
 }
