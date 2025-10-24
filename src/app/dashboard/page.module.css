@@ -1,4 +1,11 @@
 
+.page {
+    display: flex;
+    flex-direction: column;
+    min-height: 100svh;
+    font-family: var(--font-geist-sans);
+    gap: 64px;
+}
 
 .main {
     display: flex;

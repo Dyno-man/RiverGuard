@@ -4,7 +4,6 @@
     min-height: 100svh;
     font-family: var(--font-geist-sans);
     /*font-family: var(--font-montserrat);*/
-    gap: 64px;
 }
 
 .main {
@@ -34,9 +33,15 @@
 
 .howToContainer {
     flex: 1;
+    flex-direction: column;
+    justify-content: center;
     display: flex;
     align-items: center;
-    justify-content: center;
+}
+
+.howToContainer h1{
+    font-size: 4rem;
+    text-align: center;
 }
 
 

@@ -47,7 +47,7 @@
 }
 
 .list li a{
-    font-size: xx-large;
+    font-size: 1.75vw;
     font-weight: bold;
     border: 2px transparent;
     border-radius: 8px;
@@ -59,11 +59,9 @@
 .active a{
     background-color: white;
     color: #010416;
-    font-size: xx-large;
-    font-weight: bold;
-    border-radius: 2px;
-    padding: 0.2rem 1rem;
+    font-size: small;
 }
+
 .rightButtons{
     display: flex;
     align-items: center;
