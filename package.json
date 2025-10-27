@@ -7,14 +7,9 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
-    "lint": "eslint",
-    "test:firestore": "node test-firestore.js",
-    "test:simple": "node simple-test.js"
+    "lint": "eslint"
   },
   "dependencies": {
-    "@ffmpeg/ffmpeg": "^0.12.15",
-    "@ffmpeg/util": "^0.12.2",
-    "firebase": "^12.2.1",
     "next": "15.5.3",
     "react": "19.1.0",
     "react-dom": "19.1.0"
