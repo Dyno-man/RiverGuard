@@ -58,13 +58,15 @@
     background-color: rgba(255, 255, 255, 0.8);
     align-self: center;
     margin: 0 auto;
+
 }
 
 .content {
     display: flex;
     flex-direction: column;
-    gap: 1vw; /* reduced vertical space */
-    align-items: center; /* center the steps horizontally */
+    justify-content: center; /* centers vertically */
+    align-items: center;      /* centers horizontally */
+    gap: 1vw;
     padding: 2vw;
     height: 25.3vw;
     width: 100%;
@@ -144,6 +146,52 @@
     background-color: #010416;
     color: white;
 }
-.gifplaceholder{
-    border: 1px solid white;
+
+/* Middle step slightly taller */
+.tallStep {
+    min-height: 13vw;
+    padding-top: 1.5vw;
+    padding-bottom: 1.5vw;
+}
+
+/* Layout for middle step */
+.rowBetween {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    gap: 2vw;
+}
+
+/* Icon stacked above text */
+.leftContent {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    text-align: center;
+}
+
+.iconLarge {
+    width: 3vw;
+    height: 3vw;
+    color: white;
+    margin-bottom: 0.5vw;
+}
+
+/* GIF on right — full original size */
+.rightContent {
+    flex-shrink: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Original size — no scaling */
+.gifOriginal {
+    width: 10vw;
+    height: auto;
+    max-width: none;
+    max-height: none;
 }
