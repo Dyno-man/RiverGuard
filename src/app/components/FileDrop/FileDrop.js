@@ -7,39 +7,24 @@ export default function FileDrop() {
     const [showUrlInput, setShowUrlInput] = useState(false);
     const [url, setUrl] = useState("");
     const [isDragging, setIsDragging] = useState(false);
-    const [items, setItems] = useState([]); // { type: "file"|"url", name, file/url }
+    const [items, setItems] = useState([]);
+    const [streamName, setStreamName] = useState("");
 
     useEffect(() => {
         let dragCounter = 0;
 
-        const handleDragEnter = (e) => {
-            e.preventDefault();
-            dragCounter++;
-            setIsDragging(true);
-        };
-
-        const handleDragLeave = (e) => {
-            e.preventDefault();
-            dragCounter--;
-            if (dragCounter === 0) setIsDragging(false);
-        };
-
+        const handleDragEnter = (e) => { e.preventDefault(); dragCounter++; setIsDragging(true); };
+        const handleDragLeave = (e) => { e.preventDefault(); dragCounter--; if (dragCounter === 0) setIsDragging(false); };
         const handleDrop = (e) => {
             e.preventDefault();
             dragCounter = 0;
             setIsDragging(false);
-
             if (e.dataTransfer.files && e.dataTransfer.files.length > 0) {
-                const filesArray = Array.from(e.dataTransfer.files).map(file => ({
-                    type: "file",
-                    name: file.name,
-                    file
-                }));
+                const filesArray = Array.from(e.dataTransfer.files).map(file => ({ name: file.name, file }));
                 setItems(prev => [...prev, ...filesArray]);
                 e.dataTransfer.clearData();
             }
         };
-
         const handleDragOver = (e) => e.preventDefault();
 
         window.addEventListener("dragenter", handleDragEnter);
@@ -56,65 +41,52 @@ export default function FileDrop() {
     }, []);
 
     const handleFileChange = (e) => {
-        const filesArray = Array.from(e.target.files).map(file => ({
-            type: "file",
-            name: file.name,
-            file
-        }));
+        const filesArray = Array.from(e.target.files).map(file => ({ name: file.name, file }));
         setItems(prev => [...prev, ...filesArray]);
     };
 
     const handleUrlSubmit = (e) => {
         e.preventDefault();
         if (url.trim()) {
-            setItems(prev => [...prev, { type: "url", name: url, url }]);
+            setItems(prev => [...prev, { name: url, url }]);
             setUrl("");
             setShowUrlInput(false);
         }
     };
 
-    const handleCancel = () => {
-        setShowUrlInput(false);
-        setUrl("");
-    };
-
-    const handleDelete = (index) => {
-        setItems(prev => prev.filter((_, i) => i !== index));
-    };
+    const handleCancel = () => { setShowUrlInput(false); setUrl(""); };
+    const handleDelete = (index) => { setItems(prev => prev.filter((_, i) => i !== index)); };
 
     const handleSubmit = () => {
-        console.log("Submitted items:", items);
-        // send items & duration to backend
+        if (!streamName.trim()) {
+            alert("Please enter a stream name.");
+            return;
+        }
+
+        // Send to backend (mocked)
+        console.log("Submitted:", { streamName, items });
+
+        // Reset everything
+        setItems([]);
+        setStreamName("");
     };
 
     return (
         <>
-            {isDragging && (
-                <div className={styles.dragOverlay}>Drop file anywhere to upload</div>
-            )}
+            {isDragging && <div className={styles.dragOverlay}>Drop file anywhere to upload</div>}
 
             <div className={styles.container}>
                 <div className={styles.dropbox}>
-                    {/* Only show upload section if no items */}
+                    {/* Upload section */}
                     {items.length === 0 && !showUrlInput && (
                         <div className={styles.content}>
                             <label className={styles.selectBtn}>
                                 Upload Stream
-                                <input
-                                    type="file"
-                                    className={styles.hiddenInput}
-                                    onChange={handleFileChange}
-                                />
+                                <input type="file" className={styles.hiddenInput} onChange={handleFileChange} />
                             </label>
                             <p className={styles.text}>
                                 or drop a file below, paste a URL{" "}
-                                <button
-                                    type="button"
-                                    className={styles.linkBtn}
-                                    onClick={() => setShowUrlInput(true)}
-                                >
-                                    here
-                                </button>
+                                <button type="button" className={styles.linkBtn} onClick={() => setShowUrlInput(true)}>here</button>
                             </p>
                         </div>
                     )}
@@ -144,14 +116,18 @@ export default function FileDrop() {
                                     <span className={styles.itemName}>{item.name}</span>
                                     <button className={styles.deleteBtn} onClick={() => handleDelete(index)}>×</button>
                                 </div>
-
                             ))}
-                            {/* Duration input */}
+
+                            {/* Stream Name input */}
                             <input
                                 type="text"
-                                placeholder="Enter duration"
-                                className={styles.durationInput}
+                                placeholder="Enter Stream Name"
+                                value={streamName}
+                                onChange={(e) => setStreamName(e.target.value)}
+                                required
+                                className={styles.inputBox}
                             />
+
                             <button className={styles.submitBtnBottom} onClick={handleSubmit}>Submit</button>
                         </div>
                     )}
@@ -160,4 +136,3 @@ export default function FileDrop() {
         </>
     );
 }
-

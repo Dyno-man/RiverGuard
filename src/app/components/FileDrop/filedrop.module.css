@@ -180,12 +180,13 @@
     margin-top: 20px;
     align-items: center; /* center content horizontally */
     width: 100%;
+
 }
 
 .itemRow {
     display: flex;
     align-items: center;
-    gap: 8px;
+    /*gap: 8px;*/
 }
 
 .itemName {
@@ -208,9 +209,9 @@
     padding: 0;
 }
 
-.durationInput {
+.inputBox {
     padding: 12px 10px;
-    margin: 1vw;
+    /*margin: 1vw;*/
     border-radius: 6px;
     border: none;
     outline: none;
