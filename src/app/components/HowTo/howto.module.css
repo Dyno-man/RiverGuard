@@ -59,6 +59,90 @@
     align-self: center;
     margin: 0 auto;
 }
-.content{
 
+.content {
+    display: flex;
+    flex-direction: column;
+    gap: 1vw; /* reduced vertical space */
+    align-items: center; /* center the steps horizontally */
+    padding: 2vw;
+    height: 25.3vw;
+    width: 100%;
+    border: 2px solid green;
 }
+.steps{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Each step container */
+.step {
+    background-color: rgba(255, 255, 255, 0.15);
+    border-radius: 12px;
+    padding: 0.8vw 1vw; /* slightly smaller padding */
+    width: 90%; /* make it wider */
+    max-width: 40vw; /* maximum width */
+    display: flex;
+    flex-direction: column;
+    gap: 0.5vw; /* reduce spacing between elements */
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+}
+
+/* Header with icon */
+.header {
+    display: flex;
+    align-items: center;
+    gap: 0.6vw;
+}
+
+.icon {
+    width: 2vw;
+    height: 2vw;
+    color: white;
+}
+
+.title {
+    font-size: 1.6vw;
+    font-weight: bold;
+    color: white;
+}
+
+/* Row for icon + text */
+.row {
+    display: flex;
+    align-items: center;
+    gap: 0.6vw; /* smaller gap between icon and text */
+}
+
+.row p{
+    font-size: 1.5vw;
+}
+
+.textBlock {
+    display: flex;
+    flex-direction: column;
+    color: white;
+    font-size: 0.95vw; /* smaller font so it fits nicely */
+}
+
+/* Action buttons */
+.action {
+    margin-top: 0.3vw; /* reduced margin */
+    font-size: 0.95vw;
+    font-weight: 600;
+    color: #010416;
+    background-color: white;
+    padding: 0.3vw 0.8vw; /* smaller padding */
+    border-radius: 6px;
+    width: fit-content;
+    align-self: flex-start;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.action:hover {
+    background-color: #010416;
+    color: white;
+}
+

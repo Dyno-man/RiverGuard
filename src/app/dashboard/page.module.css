@@ -60,3 +60,15 @@
     justify-content: center;
     height: 88.5%;
 }
+.gifPlaceholder {
+    width: 90%;              /* wide like the steps */
+    height: 15vw;            /* enough space for GIF */
+    border: 2px dashed rgba(255, 255, 255, 0.6);
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: rgba(255, 255, 255, 0.7);
+    font-size: 1vw;
+    margin: 1vw 0;
+}

@@ -148,3 +148,95 @@
 
 .submitBtn:hover,
 .cancelBtn:hover { background-color: gray; }
+
+.itemsContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 20px;
+    width: 80%;
+}
+
+.itemBox {
+    background-color: #e0dfdc;
+    padding: 10px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.itemHeader {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 500;
+}
+
+.addedItems {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 20px;
+    align-items: center; /* center content horizontally */
+    width: 100%;
+}
+
+.itemRow {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.itemName {
+    background-color: #040A2C;
+    color: white;
+    padding: 20px 25px; /* match upload button padding */
+    border-radius: 25px; /* match upload button */
+    text-align: center;
+    min-width: 200px; /* adjust as needed */
+    font-size: 2vw; /* same as upload button */
+    font-weight: 500;
+}
+
+.deleteBtn {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: 0;
+}
+
+.durationInput {
+    padding: 12px 10px;
+    margin: 1vw;
+    border-radius: 6px;
+    border: none;
+    outline: none;
+    width: 50%;
+    font-size: 1rem;
+    text-align: center;
+}
+
+.submitBtnBottom {
+    margin-top: 12px;
+    background-color: #010416;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    border: none;
+    font-weight: 500;
+    transition: 0.2s;
+    width: 30%;
+    text-align: center;
+    font-size: 1rem;
+}
+
+.submitBtnBottom:hover {
+    background-color: gray;
+}
+
+
+

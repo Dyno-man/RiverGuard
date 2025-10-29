@@ -7,11 +7,16 @@
 }
 
 .main {
+    height: 50.3vw;
+}
+.text{
     display: flex;
-    flex-direction: row;
     gap: 32px;
     flex: 1;
     width: 100%;
     padding: 0 80px;
-    box-sizing: border-box;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    height: 88.5%;
 }
