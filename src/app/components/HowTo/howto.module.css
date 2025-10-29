@@ -68,7 +68,6 @@
     padding: 2vw;
     height: 25.3vw;
     width: 100%;
-    border: 2px solid green;
 }
 .steps{
     display: flex;
@@ -145,4 +144,6 @@
     background-color: #010416;
     color: white;
 }
-
+.gifplaceholder{
+    border: 1px solid white;
+}

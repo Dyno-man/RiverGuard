@@ -18,7 +18,9 @@ export default function Tab2() {
 
             {/* GIF Placeholder */}
             <div className={styles.gifPlaceholder}>
-                <p>GIF goes here</p>
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img src="/FileDrop.gif" alt="File drop animation" className="w-64 h-64" />
+
             </div>
 
             {/* Instructional Text */}
