@@ -8,11 +8,6 @@ import fetch from 'node-fetch'
 const app = express()
 
 // Allow your Vercel site (replace with your domain in prod)
-app.use(cors({
-    origin: ['http://localhost:3000', 'https://your-vercel-app.vercel.app'],
-    methods: ['POST', 'OPTIONS'],
-    allowedHeaders: ['Content-Type', 'Authorization']
-  }))
 // Keep memory only (no temp files)
 const upload = multer({ storage: multer.memoryStorage() })
 
