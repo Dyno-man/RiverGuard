@@ -97,6 +97,7 @@ export default function FileDrop() {
             });
             if (duration) {
                 formData.append("duration", duration);
+                formData.append("userId", (items[0]?.name || "web-upload").replace(/\W+/g, '-').slice(0, 50))
             }
             
             const response = await fetch("http://192.155.92.114/api/fileUpload", {
