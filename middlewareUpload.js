@@ -1,9 +1,9 @@
 // middlewareUpload.js (CommonJS, minimal, robust)
-const express = require('express')
-const cors = require('cors')
-const multer = require('multer')
-const axios = require('axios')
-const FormData = require('form-data')
+import express from 'express'
+import cors from 'cors'
+import multer from 'multer'
+import axios from 'axios'
+import FormData from 'form-data'
 
 const app = express()
 
