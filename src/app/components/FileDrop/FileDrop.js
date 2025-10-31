@@ -7,24 +7,16 @@ export default function FileDrop() {
     const [showUrlInput, setShowUrlInput] = useState(false);
     const [url, setUrl] = useState("");
     const [isDragging, setIsDragging] = useState(false);
-    const [items, setItems] = useState([]); // { type: "file"|"url", name, file/url }
-    const [submitStatus, setSubmitStatus] = useState(null); // null, "success", or "error"
-    const [userIdInput, setUserIdInput] = useState(""); // User-entered userId
+    const [items, setItems] = useState([]);
+    const [submitStatus, setSubmitStatus] = useState(null);
+    const [userIdInput, setUserIdInput] = useState("");
 
     useEffect(() => {
         let dragCounter = 0;
 
-        const handleDragEnter = (e) => {
-            e.preventDefault();
-            dragCounter++;
-            setIsDragging(true);
-        };
+        const handleDragEnter = (e) => { e.preventDefault(); dragCounter++; setIsDragging(true); };
 
-        const handleDragLeave = (e) => {
-            e.preventDefault();
-            dragCounter--;
-            if (dragCounter === 0) setIsDragging(false);
-        };
+        const handleDragLeave = (e) => { e.preventDefault(); dragCounter--; if (dragCounter === 0) setIsDragging(false); };
 
         const handleDrop = (e) => {
             e.preventDefault();
@@ -136,9 +128,7 @@ export default function FileDrop() {
 
     return (
         <>
-            {isDragging && (
-                <div className={styles.dragOverlay}>Drop file anywhere to upload</div>
-            )}
+            {isDragging && ( <div className={styles.dragOverlay}>Drop file anywhere to upload</div>)}
 
             <div className={styles.container}>
                 <div className={styles.dropbox}>
@@ -147,21 +137,10 @@ export default function FileDrop() {
                         <div className={styles.content}>
                             <label className={styles.selectBtn}>
                                 Upload Stream
-                                <input
-                                    type="file"
-                                    className={styles.hiddenInput}
-                                    onChange={handleFileChange}
-                                />
+                                <input type="file" className={styles.hiddenInput} onChange={handleFileChange}/>
                             </label>
-                            <p className={styles.text}>
-                                or drop a file below, paste a URL{" "}
-                                <button
-                                    type="button"
-                                    className={styles.linkBtn}
-                                    onClick={() => setShowUrlInput(true)}
-                                >
-                                    here
-                                </button>
+                            <p className={styles.text}>or drop a file below, paste a URL{" "}
+                                <button type="button" className={styles.linkBtn} onClick={() => setShowUrlInput(true)}>here</button>
                             </p>
                         </div>
                     )}
@@ -196,9 +175,10 @@ export default function FileDrop() {
                             <input
                                 type="text"
                                 placeholder="Enter Location Name"
-                                className={styles.userIdInput}
                                 value={userIdInput}
                                 onChange={(e) => setUserIdInput(e.target.value)}
+                                required
+                                className={styles.inputBox}
                             />
                             <button className={styles.submitBtnBottom} onClick={handleSubmit}>Submit</button>
                             {submitStatus && (
