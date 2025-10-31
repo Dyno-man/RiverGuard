@@ -14,10 +14,10 @@ export default function ViewStats(){
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState("");
     const [latest, setLatest] = useState(null);
-    const [searchQuery, setSearchQuery] = useState("SeniorProjectTestVideo-mp4");
+    const [searchQuery, setSearchQuery] = useState("");
     const [searchSuggestions, setSearchSuggestions] = useState([]);
     const [showSuggestions, setShowSuggestions] = useState(false);
-    const [selectedUserId, setSelectedUserId] = useState("SeniorProjectTestVideo-mp4");
+    const [selectedUserId, setSelectedUserId] = useState("");
 
     // Fetch video data when selectedUserId changes
     useEffect(() => {
