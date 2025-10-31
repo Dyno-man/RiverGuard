@@ -4,8 +4,7 @@ import DonateOption from "@/app/components/DonateOption/DonateOption.js";
 
 export default function Donate(){
     return(
-        <div className={styles.page}>
-
+        <div className="page">
             <main className={styles.main}>
                 <div className={styles.text}>
                     <h1>SUPPORT THE GUARD</h1>

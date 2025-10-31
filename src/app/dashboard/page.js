@@ -10,7 +10,7 @@ import ViewStats from "@/app/components/ViewStats/ViewStats.js";
 export default function Dashboard(){
     const [activeTab, setActiveTab] = useState("Upload");
     return(
-        <div>
+        <div className="page">
             <main className={styles.main}>
 
                 <div className={styles.tabs}>

@@ -6,7 +6,7 @@ import HowTo from "@/app/components/HowTo/HowTo.js";
 export default function Home() {
 
     return (
-        <div className={styles.page}>
+        <div className="page">
             <main className={styles.main}>
                 <div className={styles.welcome}>
                     <h1>UP WITH GUARD <br />DOWN WITH TRASH</h1>

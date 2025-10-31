@@ -3,7 +3,7 @@ import styles from "./page.module.css";
 
 export default function About(){
     return(
-        <div className={styles.page}>
+        <div className="page">
             <main className={styles.main}>
                     <div className={styles.header}>
                         <h1>Who are we?</h1>
