@@ -1,4 +1,3 @@
-
 .main {
     height: 53.7vw;
 }
@@ -8,6 +7,7 @@
     justify-content: center;
     align-items: center;
     margin-top: 1vw;
+    gap: 1vw;
 }
 
 .tab {
@@ -18,19 +18,12 @@
     justify-content: center;
     align-items: center;
     cursor: pointer;
-}
 
-.tabNumber:hover{
-    background-color: #010416;
-    color: white;
 }
 
 .tabText {
     width: 95%;
     height: 95%;
-    border-radius: 2px;
-    border: 1px solid #010416;
-
     color: white;
     display: flex;
     justify-content: center;
@@ -40,12 +33,13 @@
     z-index: 1;
 }
 
-
 .active {
     color: white;
-    background-color: rgba(0.0,0.0,0.0,1.0);
-    color: rgba(0.0,0.0,0.0,1.0);
-    border: #010416
+    background-color: rgba(255, 255, 255, 0.3);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+    border-radius: 2px;
+    border: 1px solid #010416;
+    transform: scale(1.2);
 }
 .divider {
     height: 1px;

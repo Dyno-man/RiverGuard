@@ -12,14 +12,14 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 2rem;
-    margin-bottom: 1rem;
+    gap: 1.5vw;
+    margin-bottom: 1vw;
 }
 
 .tab {
     position: relative;
-    width: 6vw;
-    height: 6vw;
+    width: 5.5vw;
+    height: 5.5vw;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -50,7 +50,7 @@
 .active {
     color: white;
     border: #010416;
-    transform: scale(1.2);
+    transform: scale(1.3);
 }
 .divider {
     height: 1px;

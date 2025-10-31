@@ -2,8 +2,8 @@
 
 import styles from "./page.module.css"
 import {useState} from "react";
-import Navbar from "@/app/components/Navbar/Navbar.js";
 import FileDrop from "@/app/components/FileDrop/FileDrop.js";
+
 import ViewStats from "@/app/components/ViewStats/ViewStats.js";
 
 
@@ -11,7 +11,6 @@ export default function Dashboard(){
     const [activeTab, setActiveTab] = useState("Upload");
     return(
         <div>
-            <Navbar />
             <main className={styles.main}>
 
                 <div className={styles.tabs}>
