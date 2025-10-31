@@ -31,8 +31,6 @@ export default function Dashboard(){
                 <div className={styles.boardView}>
                     {activeTab === "Upload" && <FileDrop />}
                     {activeTab === 'View' && <ViewStats />}
-
-
                 </div>
 
             </main>

@@ -8,7 +8,8 @@ export default function FileDrop() {
     const [url, setUrl] = useState("");
     const [isDragging, setIsDragging] = useState(false);
     const [items, setItems] = useState([]); // { type: "file"|"url", name, file/url }
-    const [duration, setDuration] = useState("");
+    const [submitStatus, setSubmitStatus] = useState(null); // null, "success", or "error"
+    const [userIdInput, setUserIdInput] = useState(""); // User-entered userId
 
     useEffect(() => {
         let dragCounter = 0;
@@ -86,6 +87,8 @@ export default function FileDrop() {
     // File Upload to Backend Computer thingy
     const handleSubmit = async () => {
         console.log("Submitted items:", items);
+        setSubmitStatus(null); // Reset status
+        
         try {
             const formData = new FormData();
             items.forEach((item, index) => {
@@ -95,10 +98,11 @@ export default function FileDrop() {
                     formData.append(`url_${index}`, item.url);
                 }
             });
-            if (duration) {
-                formData.append("duration", duration);
-                formData.append("userId", (items[0]?.name || "web-upload").replace(/\W+/g, '-').slice(0, 50))
-            }
+            // Use user input if provided, otherwise default to filename
+            const userId = userIdInput.trim() 
+                ? userIdInput.trim().replace(/\W+/g, '-').slice(0, 50)
+                : (items[0]?.name || "web-upload").replace(/\W+/g, '-').slice(0, 50);
+            formData.append("userId", userId)
             
             const response = await fetch("http://192.155.92.114/api/fileUpload", {
                 method: "POST",
@@ -111,8 +115,22 @@ export default function FileDrop() {
             
             const result = await response.json();
             console.log("Upload successful:", result);
+            setSubmitStatus("success");
+            
+            // Clear form after successful submission
+            setTimeout(() => {
+                setItems([]);
+                setUserIdInput("");
+                setSubmitStatus(null);
+            }, 2000);
         } catch (error) {
             console.error("Upload error:", error);
+            setSubmitStatus("error");
+            
+            // Clear error message after 3 seconds
+            setTimeout(() => {
+                setSubmitStatus(null);
+            }, 3000);
         }
     };
 
@@ -175,15 +193,19 @@ export default function FileDrop() {
                                 </div>
 
                             ))}
-                            {/* Duration input */}
                             <input
                                 type="text"
-                                placeholder="Enter duration"
-                                className={styles.durationInput}
-                                value={duration}
-                                onChange={(e) => setDuration(e.target.value)}
+                                placeholder="Enter Location Name"
+                                className={styles.userIdInput}
+                                value={userIdInput}
+                                onChange={(e) => setUserIdInput(e.target.value)}
                             />
                             <button className={styles.submitBtnBottom} onClick={handleSubmit}>Submit</button>
+                            {submitStatus && (
+                                <div className={`${styles.statusBox} ${submitStatus === "success" ? styles.success : styles.error}`}>
+                                    {submitStatus === "success" ? "File submitted successfully!" : "File submission failed. Please try again."}
+                                </div>
+                            )}
                         </div>
                     )}
                 </div>

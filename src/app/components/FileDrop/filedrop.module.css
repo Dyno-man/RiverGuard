@@ -220,6 +220,23 @@
     text-align: center;
 }
 
+.userIdInput {
+    padding: 12px 10px;
+    border-radius: 6px;
+    border: none;
+    outline: none;
+    width: 50%;
+    font-size: 1rem;
+    text-align: center;
+    background-color: #2a3a5c;
+    color: white;
+    margin-top: 12px;
+}
+
+.userIdInput::placeholder {
+    color: #a0a0a0;
+}
+
 .submitBtnBottom {
     margin-top: 12px;
     background-color: #010416;
@@ -237,6 +254,37 @@
 
 .submitBtnBottom:hover {
     background-color: gray;
+}
+
+.statusBox {
+    margin-top: 8px;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    text-align: center;
+    width: 30%;
+    animation: fadeIn 0.3s ease-in;
+}
+
+.statusBox.success {
+    background-color: #4caf50;
+    color: white;
+}
+
+.statusBox.error {
+    background-color: #f44336;
+    color: white;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-5px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 
