@@ -1,4 +1,3 @@
-
 .container {
     display: flex;
     flex-direction: column;
@@ -87,15 +86,13 @@
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%) scale(0.9);
-    background-color: white;
+    background-color: #040A2C;
     border-radius: 12px;
     width: 70%;
-    height: 20%;
+    height: 25%;
     display: flex;
     align-items: center;
     justify-content: center;
-    z-index: 10;
-    opacity: 0;
     pointer-events: none;
     transition: all 0.3s ease;
 }
@@ -118,36 +115,45 @@
     align-items: center;
     gap: 12px;
     width: 80%;
+
 }
 
-.urlInput {
-    color: #010416;
-    background-color: #e0dfdc;
-    padding: 8px 12px;
-    border-radius: 8px;
-    border: none;
+.inputBox {
+    width: 20vw;
+    padding: 0.9rem 1.25rem;
+    border: 2px solid white;
+    border-radius: 25px;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: white;
+    font-size: 1rem;
+    font-weight: 500;
     outline: none;
-    width: 100%;
+    transition: all 0.3s ease;
 }
 
-.urlInput::placeholder { color: #6b6b6b; }
+.inputBox:focus {
+    background-color: rgba(255, 255, 255, 0.15);
+    border-color: #3696AC;
+}
+
+.inputBox::placeholder {  color: rgba(255, 255, 255, 0.6); }
 
 .buttonGroup { display: flex; gap: 10px; }
 
-.submitBtn,
-.cancelBtn {
-    background-color: #010416;
-    color: white;
+.btn{
+    background-color: white;
+    color: #010416;
     padding: 6px 12px;
-    border-radius: 8px;
+    border-radius: 25px;
     cursor: pointer;
-    border: none;
     font-weight: 500;
+    font-size: 1vw;
     transition: 0.2s;
 }
 
-.submitBtn:hover,
-.cancelBtn:hover { background-color: gray; }
+.btn:hover{
+    background-color: #010416;
+    color: white; }
 
 .itemsContainer {
     display: flex;
@@ -173,14 +179,35 @@
     font-weight: 500;
 }
 
+/*.popupBox {*/
+/*    position: absolute;*/
+/*    top: 50%;*/
+/*    left: 50%;*/
+/*    transform: translate(-50%, -50%) scale(0.9);*/
+/*    background-color: #040A2C;*/
+/*    border-radius: 12px;*/
+/*    width: 70%;*/
+/*    height: 25%;*/
+/*    display: flex;*/
+/*    align-items: center;*/
+/*    justify-content: center;*/
+/*    z-index: 10;*/
+/*    opacity: 0;*/
+/*    pointer-events: none;*/
+/*    transition: all 0.3s ease;*/
+/*}*/
 .addedItems {
     display: flex;
     flex-direction: column;
-    gap: 12px;
+    gap: 1.5vw;
     margin-top: 20px;
     align-items: center; /* center content horizontally */
-    width: 100%;
-
+    width: 70%;
+    height: 40%;
+    border-radius: 12px;
+    padding: 1vw;
+    background-color: #040A2C;
+    transition: all 0.3s ease;
 }
 
 .itemRow {
@@ -190,8 +217,8 @@
 }
 
 .itemName {
-    background-color: #040A2C;
-    color: white;
+    background-color: white;
+    color: #040A2C;
     padding: 20px 25px; /* match upload button padding */
     border-radius: 25px; /* match upload button */
     text-align: center;
@@ -209,34 +236,37 @@
     padding: 0;
 }
 
-.inputBox {
-    padding: 12px 10px;
-    /*margin: 1vw;*/
+
+
+.statusBox {
+    margin-top: 8px;
+    padding: 8px 16px;
     border-radius: 6px;
-    border: none;
-    outline: none;
-    width: 50%;
-    font-size: 1rem;
+    font-size: 0.9rem;
     text-align: center;
-}
-
-.submitBtnBottom {
-    margin-top: 12px;
-    background-color: #010416;
-    color: white;
-    padding: 12px 20px;
-    border-radius: 8px;
-    cursor: pointer;
-    border: none;
-    font-weight: 500;
-    transition: 0.2s;
     width: 30%;
-    text-align: center;
-    font-size: 1rem;
+    animation: fadeIn 0.3s ease-in;
 }
 
-.submitBtnBottom:hover {
-    background-color: gray;
+.statusBox.success {
+    background-color: #3696AC;
+    color: white;
+}
+
+.statusBox.error {
+    background-color: #f44336;
+    color: white;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-5px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
 }
 
 

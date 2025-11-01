@@ -8,23 +8,32 @@ export default function FileDrop() {
     const [url, setUrl] = useState("");
     const [isDragging, setIsDragging] = useState(false);
     const [items, setItems] = useState([]);
-    const [streamName, setStreamName] = useState("");
+    const [submitStatus, setSubmitStatus] = useState(null);
+    const [userIdInput, setUserIdInput] = useState("");
 
     useEffect(() => {
         let dragCounter = 0;
 
         const handleDragEnter = (e) => { e.preventDefault(); dragCounter++; setIsDragging(true); };
+
         const handleDragLeave = (e) => { e.preventDefault(); dragCounter--; if (dragCounter === 0) setIsDragging(false); };
+
         const handleDrop = (e) => {
             e.preventDefault();
             dragCounter = 0;
             setIsDragging(false);
+
             if (e.dataTransfer.files && e.dataTransfer.files.length > 0) {
-                const filesArray = Array.from(e.dataTransfer.files).map(file => ({ name: file.name, file }));
+                const filesArray = Array.from(e.dataTransfer.files).map(file => ({
+                    type: "file",
+                    name: file.name,
+                    file
+                }));
                 setItems(prev => [...prev, ...filesArray]);
                 e.dataTransfer.clearData();
             }
         };
+
         const handleDragOver = (e) => e.preventDefault();
 
         window.addEventListener("dragenter", handleDragEnter);
@@ -41,51 +50,96 @@ export default function FileDrop() {
     }, []);
 
     const handleFileChange = (e) => {
-        const filesArray = Array.from(e.target.files).map(file => ({ name: file.name, file }));
+        const filesArray = Array.from(e.target.files).map(file => ({
+            type: "file",
+            name: file.name,
+            file
+        }));
         setItems(prev => [...prev, ...filesArray]);
     };
 
     const handleUrlSubmit = (e) => {
         e.preventDefault();
         if (url.trim()) {
-            setItems(prev => [...prev, { name: url, url }]);
+            setItems(prev => [...prev, { type: "url", name: url, url }]);
             setUrl("");
             setShowUrlInput(false);
         }
     };
 
-    const handleCancel = () => { setShowUrlInput(false); setUrl(""); };
-    const handleDelete = (index) => { setItems(prev => prev.filter((_, i) => i !== index)); };
+    const handleCancel = () => {
+        setShowUrlInput(false);
+        setUrl("");
+    };
 
-    const handleSubmit = () => {
-        if (!streamName.trim()) {
-            alert("Please enter a stream name.");
-            return;
+    const handleDelete = (index) => {
+        setItems(prev => prev.filter((_, i) => i !== index));
+    };
+
+    // File Upload to Backend Computer thingy
+    const handleSubmit = async () => {
+        console.log("Submitted items:", items);
+        setSubmitStatus(null); // Reset status
+        
+        try {
+            const formData = new FormData();
+            items.forEach((item, index) => {
+                if (item.type === "file" && item.file) {
+                    formData.append(`file_${index}`, item.file);
+                } else if (item.type === "url") {
+                    formData.append(`url_${index}`, item.url);
+                }
+            });
+            // Use user input if provided, otherwise default to filename
+            const userId = userIdInput.trim() 
+                ? userIdInput.trim().replace(/\W+/g, '-').slice(0, 50)
+                : (items[0]?.name || "web-upload").replace(/\W+/g, '-').slice(0, 50);
+            formData.append("userId", userId)
+            
+            const response = await fetch("http://192.155.92.114/api/fileUpload", {
+                method: "POST",
+                body: formData
+            });
+            
+            if (!response.ok) {
+                throw new Error(`Upload failed: ${response.statusText}`);
+            }
+            
+            const result = await response.json();
+            console.log("Upload successful:", result);
+            setSubmitStatus("success");
+            
+            // Clear form after successful submission
+            setTimeout(() => {
+                setItems([]);
+                setUserIdInput("");
+                setSubmitStatus(null);
+            }, 2000);
+        } catch (error) {
+            console.error("Upload error:", error);
+            setSubmitStatus("error");
+            
+            // Clear error message after 3 seconds
+            setTimeout(() => {
+                setSubmitStatus(null);
+            }, 3000);
         }
-
-        // Send to backend (mocked)
-        console.log("Submitted:", { streamName, items });
-
-        // Reset everything
-        setItems([]);
-        setStreamName("");
     };
 
     return (
         <>
-            {isDragging && <div className={styles.dragOverlay}>Drop file anywhere to upload</div>}
+            {isDragging && ( <div className={styles.dragOverlay}>Drop file anywhere to upload</div>)}
 
             <div className={styles.container}>
                 <div className={styles.dropbox}>
-                    {/* Upload section */}
+                    {/* Only show upload section if no items */}
                     {items.length === 0 && !showUrlInput && (
                         <div className={styles.content}>
                             <label className={styles.selectBtn}>
                                 Upload Stream
-                                <input type="file" className={styles.hiddenInput} onChange={handleFileChange} />
+                                <input type="file" className={styles.hiddenInput} onChange={handleFileChange}/>
                             </label>
-                            <p className={styles.text}>
-                                or drop a file below, paste a URL{" "}
+                            <p className={styles.text}>or drop a file below, paste a URL{" "}
                                 <button type="button" className={styles.linkBtn} onClick={() => setShowUrlInput(true)}>here</button>
                             </p>
                         </div>
@@ -95,15 +149,15 @@ export default function FileDrop() {
                         <form onSubmit={handleUrlSubmit} className={styles.popupForm}>
                             <input
                                 type="text"
-                                className={styles.urlInput}
+                                className={styles.inputBox}
                                 placeholder="Enter stream link"
                                 value={url}
                                 onChange={(e) => setUrl(e.target.value)}
                                 autoFocus
                             />
                             <div className={styles.buttonGroup}>
-                                <button type="button" className={styles.cancelBtn} onClick={handleCancel}>Cancel</button>
-                                <button type="submit" className={styles.submitBtn}>Add</button>
+                                <button type="button" className={styles.btn} onClick={handleCancel}>Cancel</button>
+                                <button type="submit" className={styles.btn}>Add</button>
                             </div>
                         </form>
                     </div>
@@ -116,19 +170,22 @@ export default function FileDrop() {
                                     <span className={styles.itemName}>{item.name}</span>
                                     <button className={styles.deleteBtn} onClick={() => handleDelete(index)}>×</button>
                                 </div>
-                            ))}
 
-                            {/* Stream Name input */}
+                            ))}
                             <input
                                 type="text"
-                                placeholder="Enter Stream Name"
-                                value={streamName}
-                                onChange={(e) => setStreamName(e.target.value)}
+                                placeholder="Enter Location Name"
+                                value={userIdInput}
+                                onChange={(e) => setUserIdInput(e.target.value)}
                                 required
                                 className={styles.inputBox}
                             />
-
-                            <button className={styles.submitBtnBottom} onClick={handleSubmit}>Submit</button>
+                            <button className={styles.btn} onClick={handleSubmit}>Submit</button>
+                            {submitStatus && (
+                                <div className={`${styles.statusBox} ${submitStatus === "success" ? styles.success : styles.error}`}>
+                                    {submitStatus === "success" ? "File submitted successfully!" : "File submission failed. Please try again."}
+                                </div>
+                            )}
                         </div>
                     )}
                 </div>
@@ -136,3 +193,4 @@ export default function FileDrop() {
         </>
     );
 }
+
