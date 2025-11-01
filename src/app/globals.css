@@ -11,6 +11,20 @@
     --foreground: #ededed;
   }
 }
+.page {
+    display: flex;
+    flex-direction: column;
+    height: calc(100svh - 5rem);
+    font-family: var(--font-geist-sans), serif;
+}
+
+main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    height: calc(100vh - 5rem);
+}
 
 html,
 body {

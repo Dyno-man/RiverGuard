@@ -11,7 +11,7 @@ export default function Tab1() {
             <div className={styles.step}>
                 <div className={styles.header}>
                     <Trash2 className={styles.icon} />
-                    <h2 className={styles.title}>Find Trash</h2>
+                    <h2 className={styles.title}>Go Find Trash</h2>
                 </div>
             </div>
 
