@@ -5,7 +5,7 @@ import dynamic from 'next/dynamic';
 import styles from "./viewstats.module.css";
 
 // Dynamically import chart to avoid SSR issues with Recharts
-const GarbageChart = dynamic(() => import('./GarbageChart'), { 
+const GarbageChart = dynamic(() => import('./GarbageChart'), {
     ssr: false,
     loading: () => <div className={styles.placeholderText}>Loading chart...</div>
 });
@@ -18,20 +18,22 @@ export default function ViewStats(){
     const [searchSuggestions, setSearchSuggestions] = useState([]);
     const [showSuggestions, setShowSuggestions] = useState(false);
     const [selectedUserId, setSelectedUserId] = useState("");
+    const [isTyping, setIsTyping] = useState(false);
+
 
     // Fetch video data when selectedUserId changes
     useEffect(() => {
         let cancelled = false;
         async function fetchLatest() {
             if (!selectedUserId) return;
-            
+
             try {
                 setLoading(true);
                 setError("");
                 // Fetch video by userId from videos collection
                 const res = await fetch(`/api/videos/${encodeURIComponent(selectedUserId)}`, { cache: "no-store" });
                 if (cancelled) return;
-                
+
                 if (!res.ok) {
                     if (res.status === 404) {
                         throw new Error('Video not found for this location');
@@ -53,7 +55,7 @@ export default function ViewStats(){
             }
         }
         fetchLatest();
-        return () => { 
+        return () => {
             cancelled = true;
         };
     }, [selectedUserId]);
@@ -72,14 +74,18 @@ export default function ViewStats(){
             try {
                 const res = await fetch(`/api/videos?search=${encodeURIComponent(trimmedQuery)}`, { cache: "no-store" });
                 if (cancelled) return;
-                
+
                 if (res.ok) {
                     const json = await res.json();
                     if (!cancelled && json?.data) {
                         const suggestions = json.data.slice(0, 10); // Limit to 10 suggestions
                         setSearchSuggestions(suggestions);
                         // Only show suggestions if there are results
-                        setShowSuggestions(suggestions.length > 0);
+                        if (isTyping && document.activeElement === document.querySelector(`.${styles.searchInput}`)) {
+                            setShowSuggestions(suggestions.length > 0);
+                        }
+
+
                     } else {
                         setSearchSuggestions([]);
                         setShowSuggestions(false);
@@ -102,7 +108,7 @@ export default function ViewStats(){
             cancelled = true;
             clearTimeout(timeoutId);
         };
-    }, [searchQuery]);
+    }, [searchQuery,isTyping]);
 
     const framesProcessed = latest?.framesProcessed ?? null;
     const totalGarbageCount = latest?.totalGarbageCount ?? null;
@@ -110,7 +116,7 @@ export default function ViewStats(){
     const avgGarbage = garbageCounts.length
         ? (garbageCounts.reduce((a, b) => a + (typeof b === "number" ? b : 0), 0) / garbageCounts.length)
         : null;
-    
+
     // Prepare chart data
     const chartData = garbageCounts.map((count, index) => ({
         frame: index,
@@ -142,14 +148,14 @@ export default function ViewStats(){
         console.error('Error converting timestamp:', err);
         uploadDate = null;
     }
-    
+
     const userId = latest?.userId || latest?.streamID || "";
     const videoFilename = latest?.videoFilename || latest?.url || "";
 
     const handleSearchChange = (e) => {
         const value = e.target.value;
         setSearchQuery(value);
-        // Only show suggestions if they've typed something
+        setIsTyping(true); // user is actively typing
         if (value.trim().length > 0) {
             setShowSuggestions(true);
         } else {
@@ -158,11 +164,14 @@ export default function ViewStats(){
         }
     };
 
+
     const handleSelectUserId = (userId) => {
         setSelectedUserId(userId);
         setSearchQuery(userId);
         setShowSuggestions(false);
         setSearchSuggestions([]);
+        setIsTyping(false);
+
     };
 
     const handleSearchSubmit = (e) => {
@@ -170,27 +179,28 @@ export default function ViewStats(){
         if (searchQuery.trim()) {
             setSelectedUserId(searchQuery.trim());
             setShowSuggestions(false);
+            setIsTyping(false);
+
         }
     };
 
     const handleSearchFocus = () => {
-        // Only show suggestions if there's text and suggestions available
-        if (searchQuery.trim().length > 0 && searchSuggestions.length > 0) {
+        if (!loading && searchQuery.trim().length > 0 && searchSuggestions.length > 0) {
             setShowSuggestions(true);
         }
     };
+
 
     return(
         <div className={styles.container}>
             <main className={styles.main}>
                 {/* Top Section - Info Boxes and Search */}
-                <div className={styles.topSection}>
+                <div className={styles.streamBar}>
+
                     <div className={styles.infoBox}>
-                        <span className={styles.infoLabel}>Uploaded</span>
-                        {latest && uploadDate && (
-                            <div className={styles.infoValue}>{new Date(uploadDate).toLocaleString()}</div>
-                        )}
+                        <h1>Uploaded</h1>{latest && uploadDate && (<p>{new Date(uploadDate).toLocaleString()}</p>)}
                     </div>
+
                     <div className={styles.searchBox}>
                         <form onSubmit={handleSearchSubmit} className={styles.searchForm}>
                             <input
@@ -200,7 +210,14 @@ export default function ViewStats(){
                                 value={searchQuery}
                                 onChange={handleSearchChange}
                                 onFocus={handleSearchFocus}
-                                onBlur={() => setTimeout(() => setShowSuggestions(false), 200)}
+                                onBlur={(e) => {
+                                    requestAnimationFrame(() => {
+                                        if (!e.relatedTarget || !e.relatedTarget.closest(`.${styles.suggestionItem}`)) {
+                                            setShowSuggestions(false);
+                                        }
+                                    });
+                                }}
+
                             />
                             {showSuggestions && searchSuggestions.length > 0 && (
                                 <div className={styles.suggestionsList}>
@@ -221,16 +238,15 @@ export default function ViewStats(){
                             )}
                         </form>
                     </div>
+
                     <div className={styles.infoBox}>
-                        <span className={styles.infoLabel}>Location</span>
-                        {latest && userId && (
-                            <div className={styles.infoValue}>{userId}</div>
-                        )}
+                        <h1>Location</h1>{latest && userId && (<p>{userId}</p>)}
                     </div>
+
                 </div>
 
                 {/* Center Section - Graph Area */}
-                <div className={styles.graphArea}>
+                <div className={styles.displayGraph}>
                     {loading && <div className={styles.placeholderText}>Loading...</div>}
                     {!loading && error && <div className={styles.placeholderText}>{error}</div>}
                     {!loading && !error && latest && chartData.length > 0 && (
@@ -245,7 +261,7 @@ export default function ViewStats(){
                 </div>
 
                 {/* Bottom Section - Detailed Stats */}
-                <div className={styles.statsSection}>
+                <div className={styles.displayStats}>
                     {loading && <div className={styles.loadingMessage}>Loading...</div>}
                     {!loading && error && <div className={styles.errorMessage}>{error}</div>}
                     {!loading && !error && latest && (
@@ -267,4 +283,5 @@ export default function ViewStats(){
             </main>
         </div>
     );
+
 }
