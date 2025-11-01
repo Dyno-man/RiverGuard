@@ -10,6 +10,8 @@ export default function FileDrop() {
     const [items, setItems] = useState([]);
     const [submitStatus, setSubmitStatus] = useState(null);
     const [userIdInput, setUserIdInput] = useState("");
+    const [isSubmitting, setIsSubmitting] = useState(false);
+
 
     useEffect(() => {
         let dragCounter = 0;
@@ -77,39 +79,34 @@ export default function FileDrop() {
     };
 
     // File Upload to Backend Computer thingy
+
     const handleSubmit = async () => {
-        console.log("Submitted items:", items);
-        setSubmitStatus(null); // Reset status
-        
+        if (items.length === 0) return;
+        setIsSubmitting(true);   // Start spinner
+        setSubmitStatus(null);   // Clear previous status
+
         try {
             const formData = new FormData();
             items.forEach((item, index) => {
-                if (item.type === "file" && item.file) {
-                    formData.append(`file_${index}`, item.file);
-                } else if (item.type === "url") {
-                    formData.append(`url_${index}`, item.url);
-                }
+                if (item.type === "file" && item.file) formData.append(`file_${index}`, item.file);
+                else if (item.type === "url") formData.append(`url_${index}`, item.url);
             });
-            // Use user input if provided, otherwise default to filename
-            const userId = userIdInput.trim() 
+
+            const userId = userIdInput.trim()
                 ? userIdInput.trim().replace(/\W+/g, '-').slice(0, 50)
                 : (items[0]?.name || "web-upload").replace(/\W+/g, '-').slice(0, 50);
-            formData.append("userId", userId)
-            
+            formData.append("userId", userId);
+
             const response = await fetch("http://192.155.92.114/api/fileUpload", {
                 method: "POST",
                 body: formData
             });
-            
-            if (!response.ok) {
-                throw new Error(`Upload failed: ${response.statusText}`);
-            }
-            
-            const result = await response.json();
-            console.log("Upload successful:", result);
+
+            if (!response.ok) throw new Error(`Upload failed: ${response.statusText}`);
+
             setSubmitStatus("success");
-            
-            // Clear form after successful submission
+
+            // Clear items after success
             setTimeout(() => {
                 setItems([]);
                 setUserIdInput("");
@@ -118,13 +115,13 @@ export default function FileDrop() {
         } catch (error) {
             console.error("Upload error:", error);
             setSubmitStatus("error");
-            
-            // Clear error message after 3 seconds
-            setTimeout(() => {
-                setSubmitStatus(null);
-            }, 3000);
+
+            setTimeout(() => setSubmitStatus(null), 3000);
+        } finally {
+            setIsSubmitting(false); // Stop spinner
         }
     };
+
 
     return (
         <>
@@ -167,7 +164,7 @@ export default function FileDrop() {
                         <div className={styles.addedItems}>
                             {items.map((item, index) => (
                                 <div key={index} className={styles.itemRow}>
-                                    <span className={styles.itemName}>{item.name}</span>
+                                    <span className={styles.itemName} style={{ fontSize: `${Math.max(12, 40 - item.name.length)}px` }}>{item.name}</span>
                                     <button className={styles.deleteBtn} onClick={() => handleDelete(index)}>×</button>
                                 </div>
 
@@ -180,12 +177,22 @@ export default function FileDrop() {
                                 required
                                 className={styles.inputBox}
                             />
-                            <button className={styles.btn} onClick={handleSubmit}>Submit</button>
-                            {submitStatus && (
-                                <div className={`${styles.statusBox} ${submitStatus === "success" ? styles.success : styles.error}`}>
-                                    {submitStatus === "success" ? "File submitted successfully!" : "File submission failed. Please try again."}
-                                </div>
-                            )}
+                            <div style={{ display: "flex", justifyContent: "center", alignItems: "center", marginTop: "12px" }}>
+                                {!isSubmitting && !submitStatus && (
+                                    <button className={styles.btn} onClick={handleSubmit}>Submit</button>
+                                )}
+
+                                {isSubmitting && (
+                                    <div className={styles.spinner}></div>
+                                )}
+
+                                {submitStatus && (
+                                    <div className={`${styles.statusBox} ${submitStatus === "success" ? styles.success : styles.error}`}>
+                                        {submitStatus === "success" ? "File submitted successfully!" : "File submission failed. Please try again."}
+                                    </div>
+                                )}
+                            </div>
+
                         </div>
                     )}
                 </div>
