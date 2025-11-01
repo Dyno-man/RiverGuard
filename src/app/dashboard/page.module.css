@@ -52,9 +52,9 @@
     background-color: rgba(255, 255, 255, 0.8);
 }
 .boardView {
-    height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: center;
     height: 88%;
+    width: 100%;
 }
