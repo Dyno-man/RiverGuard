@@ -34,7 +34,7 @@ export default function GarbageChart({ data }) {
                 <Line 
                     type="monotone" 
                     dataKey="garbage" 
-                    stroke="#3696ac" 
+                    stroke="#FFFFFF"
                     strokeWidth={2}
                     dot={{ fill: '#3696ac', r: 4 }}
                     activeDot={{ r: 6 }}

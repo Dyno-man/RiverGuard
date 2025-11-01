@@ -149,15 +149,15 @@ export default function FileDrop() {
                         <form onSubmit={handleUrlSubmit} className={styles.popupForm}>
                             <input
                                 type="text"
-                                className={styles.urlInput}
+                                className={styles.inputBox}
                                 placeholder="Enter stream link"
                                 value={url}
                                 onChange={(e) => setUrl(e.target.value)}
                                 autoFocus
                             />
                             <div className={styles.buttonGroup}>
-                                <button type="button" className={styles.cancelBtn} onClick={handleCancel}>Cancel</button>
-                                <button type="submit" className={styles.submitBtn}>Add</button>
+                                <button type="button" className={styles.btn} onClick={handleCancel}>Cancel</button>
+                                <button type="submit" className={styles.btn}>Add</button>
                             </div>
                         </form>
                     </div>
@@ -180,7 +180,7 @@ export default function FileDrop() {
                                 required
                                 className={styles.inputBox}
                             />
-                            <button className={styles.submitBtnBottom} onClick={handleSubmit}>Submit</button>
+                            <button className={styles.btn} onClick={handleSubmit}>Submit</button>
                             {submitStatus && (
                                 <div className={`${styles.statusBox} ${submitStatus === "success" ? styles.success : styles.error}`}>
                                     {submitStatus === "success" ? "File submitted successfully!" : "File submission failed. Please try again."}
