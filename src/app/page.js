@@ -9,9 +9,9 @@ export default function Home() {
         <div className="page">
             <main className={styles.main}>
                 <div className={styles.welcome}>
-                    <h1>UP WITH GUARD <br />DOWN WITH TRASH</h1>
+                    <h1 className={styles.welcomeHeader}>UP WITH GUARD <br />DOWN WITH TRASH</h1>
                     <div className={styles.welcomeText}>
-                        It is not the critic who counts; not the man who points out how the strong man stumbles, or where the doer of deeds could have done them better. The credit belongs to the man who is actually in the arena, whose face is marred by dust and sweat and blood; who strives valiantly; who errs, who comes short again and again, because there is no effort without error and shortcoming; but who does actually strive to do the deeds; who knows great enthusiasms, the great devotions; who spends himself in a worthy cause; who at the best knows in the end the triumph of high achievement, and who at the worst, if he fails, at least fails while daring greatly, so that his place shall never be with those cold and timid souls who neither know victory nor defeat.
+                        <p>RiverGuard leverages AI-driven object detection to identify and classify river trash in real time, helping to reduce pollution and improve waterway health. Our system processes video and image data to automatically detect waste without manual monitoring. By providing accessible, actionable data, RiverGuard empowers communities and researchers to respond faster and build long-term sustainability efforts.</p>
                     </div>
                 </div>
                 <div className={styles.howToContainer}>

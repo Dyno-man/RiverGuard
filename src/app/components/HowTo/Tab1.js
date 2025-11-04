@@ -19,23 +19,21 @@ export default function Tab1() {
                 <div className={styles.row}>
                     <Video className={styles.icon} />
                     <div className={styles.textBlock}>
-                        <p>Saw a video?</p>
-                        <p>Found a live stream?</p>
+                        <p>Found a video?</p>
+                        <p>Already have your own?</p>
                     </div>
                 </div>
-                <Link href="/dashboard">
-                    <button className={styles.action}>Send the Link!</button>
-                </Link>
             </div>
 
             <div className={styles.step}>
                 <div className={styles.row}>
                     <Camera className={styles.icon} />
-                    <p>Have your own video?</p>
+                    <p>Send them all</p>
+                    <Link href="/dashboard">
+                        <button className={styles.action}>here!</button>
+                    </Link>
                 </div>
-                <Link href="/dashboard">
-                    <button className={styles.action}>Upload it here!</button>
-                </Link>
+
             </div>
 
 

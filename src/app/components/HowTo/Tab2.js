@@ -22,7 +22,7 @@ export default function Tab2() {
                     <div className={styles.leftContent}>
                         <FileText className={styles.iconLarge} />
                         <div className={styles.textBlock}>
-                            <p>Here you can submit files or links</p>
+                            <p>Here you can submit your video files</p>
                         </div>
                     </div>
 
@@ -43,7 +43,7 @@ export default function Tab2() {
                 <div className={styles.header}>
                     <Box className={styles.icon} />
                     <div className={styles.textBlock}>
-                        <p>Attach a file/link in our drop box and give it a name</p>
+                        <p>Attach a file in our drop box and give it a name</p>
                     </div>
                 </div>
             </div>

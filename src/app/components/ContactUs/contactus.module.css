@@ -26,7 +26,7 @@
 
 .contactUs {
     position: absolute;
-    top: 110%; /* slightly below the Contact Us button */
+    top: 1vw; /* slightly below the Contact Us button */
     right: 0;
     width: 20vw;
     min-height: 20vw;

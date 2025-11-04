@@ -3,15 +3,39 @@
 import styles from "./howto.module.css";
 
 export default function Tab3() {
+
     return (
         <div>
-
             <main className={styles.content}>
-                Once we&#39;re done counting all that pesky trash
+                {/* Text above GIF */}
+                <div className={styles.step}>
+                    <div className={styles.textBlock}>
+                        <p>Once we&apos;re done counting all that pesky trash...</p>
+                    </div>
+                </div>
 
-                see the results in the Stream Viewer!
+                {/* GIF */}
+                <div className={styles.step}>
+                    <div className={styles.rightContent}>
+                        {/* eslint-disable-next-line @next/next/no-img-element */}
+                        <img
+                            src="/ViewStats.gif"
+                            alt="Stream Viewer animation"
+                            className={styles.gifOriginal}
+                        />
+                    </div>
+                </div>
+
+                {/* Text below GIF */}
+                <div className={styles.step}>
+                    <div className={styles.textBlock}>
+                        <p>...see the results in the Stream Viewer!</p>
+                    </div>
+                </div>
             </main>
-
         </div>
     );
+
+
+
 }
