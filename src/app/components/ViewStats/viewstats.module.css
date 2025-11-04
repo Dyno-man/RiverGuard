@@ -156,20 +156,22 @@
     margin-left: 10%;
     width: 80%;
     height: 40%;
+    justify-content: center;
+    align-items: center;
 }
 
 .statsContent {
     display: flex;
     flex-direction: column;
     justify-content: center;
+    height: 100%;
     align-items: center;
     gap: 1rem;
-    border: 2px solid green;
 }
 
 
 .statRow {
-    font-size: 1rem;
+    font-size: 0.8vw;
     color: white;
     line-height: 1.6;
 }
