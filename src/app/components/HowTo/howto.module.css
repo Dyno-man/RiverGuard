@@ -8,6 +8,12 @@
 .headerText{
     text-align: center;
 }
+.headerText h1{
+    font-size: 3vw;
+}
+.headerText h2{
+    font-size: 1vw;
+}
 .tabs {
     display: flex;
     justify-content: center;
@@ -15,6 +21,7 @@
     gap: 1.5vw;
     margin-bottom: 1vw;
 }
+
 
 .tab {
     position: relative;

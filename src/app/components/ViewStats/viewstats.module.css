@@ -13,9 +13,9 @@
 .main {
     display: flex;
     flex-direction: column;
-    gap: 2.5rem;
-    width: 100%;
-    max-width: 1400px;
+    gap: 2vw;
+    width: 75%;
+    align-content: center;
 }
 
 /* ─────────────── Top Section ─────────────── */
@@ -37,7 +37,6 @@
     min-width: 200px;
     height: auto;
     text-align: center;
-    font-size: 1.1rem;
     font-weight: 500;
     display: flex;
     flex-direction: column;
@@ -46,20 +45,20 @@
 }
 
 .infoBox h1 {
-    font-size: 1.3rem;
+    font-size: 1.5vw;
     margin-bottom: 0.5rem;
 }
 
 .infoBox p {
-    font-size: 1rem;
+    font-size: 0.8vw;
     color: #f0f0f0;
 }
 
 /* ─────────────── Search Section ─────────────── */
 .searchBox {
     flex: 1;
-    min-width: 250px;
-    max-width: 400px;
+    min-width: 5vw;
+    max-width: 16vw;
     position: relative;
 }
 
@@ -70,12 +69,12 @@
 
 .searchInput {
     width: 100%;
-    padding: 0.9rem 1.25rem;
+    padding: 0.56vw 1vw;
     border: 2px solid white;
     border-radius: 25px;
     background-color: rgba(255, 255, 255, 0.1);
     color: white;
-    font-size: 1rem;
+    font-size: 0.65vw;
     font-weight: 500;
     outline: none;
     transition: all 0.3s ease;
@@ -154,23 +153,20 @@
     border: 2px solid white;
     border-radius: 25px;
     background-color: rgba(255, 255, 255, 0.05);
-    width: 100%;
+    margin-left: 10%;
+    width: 80%;
     height: 40%;
-    padding: 2.5rem;
 }
 
 .statsContent {
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+    gap: 1rem;
+    border: 2px solid green;
 }
 
-.leftColumn {
-    display: flex;
-    flex-direction: column;
-    gap: 1rem;
-    text-align: center;
-}
 
 .statRow {
     font-size: 1rem;
@@ -183,12 +179,10 @@
     margin-right: 0.5rem;
 }
 
-.loadingMessage,
-.errorMessage,
-.noDataMessage {
+.messageText {
     color: white;
     text-align: center;
-    font-size: 1.1rem;
+    font-size: 1vw;
     padding: 2rem;
 }
 

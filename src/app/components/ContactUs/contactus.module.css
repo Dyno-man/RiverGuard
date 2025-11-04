@@ -1,0 +1,160 @@
+/*.container {*/
+/*    position: relative;*/
+/*    background: none;*/
+/*    width: auto;*/
+/*    height: auto;*/
+/*}*/
+.container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0,0,0,0.6);
+    display: flex;
+    justify-content: flex-end; /* Align right side (under Contact button) */
+    align-items: flex-start;
+    z-index: 999;
+}
+
+/* Position wrapper relative to navbar button */
+.wrapper {
+    position: relative;
+    margin-top: 3.5vw; /* slightly below navbar */
+    margin-right: 0.5vw; /* align near the Contact Us button */
+}
+
+.contactUs {
+    position: absolute;
+    top: 110%; /* slightly below the Contact Us button */
+    right: 0;
+    width: 20vw;
+    min-height: 20vw;
+    border: 2px solid white;
+    border-radius: 8px;
+    background-color: #040A2C;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.4);
+    animation: fadeIn 0.3s ease;
+    z-index: 999;
+}
+
+.headerText {
+    text-align: center;
+    margin-top: 1vw;
+}
+
+.headerText h1 {
+    font-size: 2.5vw;
+    color: white;
+}
+
+.headerText h2 {
+    font-size: 1vw;
+    color: rgba(255,255,255,0.8);
+}
+
+.divider {
+    height: 1px;
+    width: 90%;
+    background-color: rgba(255,255,255,0.8);
+    margin: 1vw 0;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 85%;
+    gap: 1vw;
+    padding-bottom: 2vw;
+}
+
+.searchInput {
+    width: 100%;
+    padding: 0.56vw 1vw;
+    border: 2px solid white;
+    border-radius: 25px;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: white;
+    font-size: 0.9vw;
+    font-weight: 500;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.searchInput::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+.searchInput:focus {
+    background-color: rgba(255, 255, 255, 0.15);
+    border-color: #010416;
+}
+
+/* Message area */
+.textareaInput {
+    width: 100%;
+    height: 6vw;
+    resize: none;
+    padding: 0.8vw 1vw;
+    border: 2px solid white;
+    border-radius: 12px;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: white;
+    font-size: 0.9vw;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.textareaInput::placeholder {
+    color: rgba(255,255,255,0.6);
+}
+
+.textareaInput:focus {
+    background-color: rgba(255,255,255,0.15);
+    border-color: #010416;
+}
+
+.buttonRow {
+    display: flex;
+    justify-content: center;
+    gap: 1vw;
+    margin-top: 1vw;
+}
+
+.action {
+    font-size: 0.95vw;
+    font-weight: 600;
+    color: #010416;
+    background-color: white;
+    padding: 0.4vw 1vw;
+    border-radius: 6px;
+    width: fit-content;
+    cursor: pointer;
+    transition: 0.3s;
+    border: none;
+}
+
+.action:hover {
+    background-color: #010416;
+    color: white;
+}
+
+.cancelButton {
+    background-color: rgba(255, 255, 255, 0.7);
+}
+
+.cancelButton:hover {
+    background-color: #010416;
+    color: white;
+}
+
+/* Fade animation */
+@keyframes fadeIn {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+}

@@ -262,22 +262,21 @@ export default function ViewStats(){
 
                 {/* Bottom Section - Detailed Stats */}
                 <div className={styles.displayStats}>
-                    {loading && <div className={styles.loadingMessage}>Loading...</div>}
-                    {!loading && error && <div className={styles.errorMessage}>{error}</div>}
+                    {loading && <div className={styles.messageText}>Loading...</div>}
+                    {!loading && error && <div className={styles.messageText}>{error}</div>}
                     {!loading && !error && latest && (
                         <div className={styles.statsContent}>
-                            <div className={styles.leftColumn}>
+
                                 <div className={styles.statRow}><strong>Location:</strong> {userId}</div>
                                 <div className={styles.statRow}><strong>Video:</strong> {String(videoFilename)}</div>
                                 <div className={styles.statRow}><strong>Uploaded:</strong> {uploadDate ? new Date(uploadDate).toLocaleString() : "-"}</div>
                                 <div className={styles.statRow}><strong>Seconds processed:</strong> {framesProcessed ?? "-"}</div>
                                 <div className={styles.statRow}><strong>Total garbage count:</strong> {totalGarbageCount ?? "-"}</div>
                                 <div className={styles.statRow}><strong>Avg garbage/frame:</strong> {avgGarbage !== null ? avgGarbage.toFixed(2) : "-"}</div>
-                            </div>
                         </div>
                     )}
                     {!loading && !error && !latest && (
-                        <div className={styles.noDataMessage}>No information found for location: {selectedUserId || "search for a location"}</div>
+                        <div className={styles.messageText}>No information found for location: {selectedUserId || "search for a location"}</div>
                     )}
                 </div>
             </main>

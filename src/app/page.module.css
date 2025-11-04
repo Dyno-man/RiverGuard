@@ -17,7 +17,7 @@
 
 }
 .welcome h1 {
-    font-size: 4rem;
+    font-size: 3vw;
     text-align: center;
 }
 
@@ -28,13 +28,6 @@
     display: flex;
     align-items: center;
 }
-
-.howToContainer h1{
-    font-size: 4rem;
-    text-align: center;
-}
-
-
 
 @media (max-width: 768px) {
     .main {
