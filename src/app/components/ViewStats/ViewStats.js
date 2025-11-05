@@ -191,16 +191,105 @@ export default function ViewStats(){
     };
 
 
+    // return(
+    //     <div className={styles.container}>
+    //         <main className={styles.main}>
+    //             {/* Top Section - Info Boxes and Search */}
+    //             <div className={styles.streamBar}>
+    //
+    //                 <div className={styles.infoBox}>
+    //                     <h1>Uploaded</h1>{latest && uploadDate && (<p>{new Date(uploadDate).toLocaleString()}</p>)}
+    //                 </div>
+    //
+    //                 <div className={styles.searchBox}>
+    //                     <form onSubmit={handleSearchSubmit} className={styles.searchForm}>
+    //                         <input
+    //                             type="text"
+    //                             placeholder="Search by location name..."
+    //                             className={styles.searchInput}
+    //                             value={searchQuery}
+    //                             onChange={handleSearchChange}
+    //                             onFocus={handleSearchFocus}
+    //                             onBlur={(e) => {
+    //                                 requestAnimationFrame(() => {
+    //                                     if (!e.relatedTarget || !e.relatedTarget.closest(`.${styles.suggestionItem}`)) {
+    //                                         setShowSuggestions(false);
+    //                                     }
+    //                                 });
+    //                             }}
+    //
+    //                         />
+    //                         {showSuggestions && searchSuggestions.length > 0 && (
+    //                             <div className={styles.suggestionsList}>
+    //                                 {searchSuggestions.map((item, index) => (
+    //                                     <div
+    //                                         key={index}
+    //                                         className={styles.suggestionItem}
+    //                                         onClick={() => handleSelectUserId(item.userId)}
+    //                                         onMouseDown={(e) => e.preventDefault()}
+    //                                     >
+    //                                         <div className={styles.suggestionUserId}>{item.userId}</div>
+    //                                         {item.videoFilename && (
+    //                                             <div className={styles.suggestionFilename}>{item.videoFilename}</div>
+    //                                         )}
+    //                                     </div>
+    //                                 ))}
+    //                             </div>
+    //                         )}
+    //                     </form>
+    //                 </div>
+    //
+    //                 <div className={styles.infoBox}>
+    //                     <h1>Location</h1>{latest && userId && (<p>{userId}</p>)}
+    //                 </div>
+    //
+    //             </div>
+    //
+    //             {/* Center Section - Graph Area */}
+    //             <div className={styles.displayGraph}>
+    //                 {loading && <div className={styles.placeholderText}>Search to load data</div>}
+    //                 {!loading && error && <div className={styles.placeholderText}>{error}</div>}
+    //                 {!loading && !error && latest && chartData.length > 0 && (
+    //                     <GarbageChart data={chartData} />
+    //                 )}
+    //                 {!loading && !error && latest && chartData.length === 0 && (
+    //                     <div className={styles.placeholderText}>No frame data available</div>
+    //                 )}
+    //                 {!loading && !error && !latest && (
+    //                     <div className={styles.placeholderText}>No data available</div>
+    //                 )}
+    //             </div>
+    //
+    //             {/* Bottom Section - Detailed Stats */}
+    //             <div className={styles.displayStats}>
+    //                 {loading && <div className={styles.messageText}></div>}
+    //                 {!loading && error && <div className={styles.messageText}>{error}</div>}
+    //                 {!loading && !error && latest && (
+    //                     <div className={styles.statsContent}>
+    //
+    //                             <div className={styles.statRow}><strong>Location:</strong> {userId}</div>
+    //                             <div className={styles.statRow}><strong>Video:</strong> {String(videoFilename)}</div>
+    //                             <div className={styles.statRow}><strong>Uploaded:</strong> {uploadDate ? new Date(uploadDate).toLocaleString() : "-"}</div>
+    //                             <div className={styles.statRow}><strong>Seconds processed:</strong> {framesProcessed ?? "-"}</div>
+    //                             <div className={styles.statRow}><strong>Total garbage count:</strong> {totalGarbageCount ?? "-"}</div>
+    //                             <div className={styles.statRow}><strong>Avg garbage/frame:</strong> {avgGarbage !== null ? avgGarbage.toFixed(2) : "-"}</div>
+    //                     </div>
+    //                 )}
+    //                 {!loading && !error && !latest && (
+    //                     <div className={styles.messageText}>No information found for location: {selectedUserId || "search for a location"}</div>
+    //                 )}
+    //             </div>
+    //         </main>
+    //     </div>
+    // );
+
+    //POTENTIAL CHANGE
     return(
         <div className={styles.container}>
             <main className={styles.main}>
                 {/* Top Section - Info Boxes and Search */}
-                <div className={styles.streamBar}>
 
-                    <div className={styles.infoBox}>
-                        <h1>Uploaded</h1>{latest && uploadDate && (<p>{new Date(uploadDate).toLocaleString()}</p>)}
-                    </div>
-
+                <div className={styles.info}>
                     <div className={styles.searchBox}>
                         <form onSubmit={handleSearchSubmit} className={styles.searchForm}>
                             <input
@@ -238,34 +327,11 @@ export default function ViewStats(){
                             )}
                         </form>
                     </div>
-
-                    <div className={styles.infoBox}>
-                        <h1>Location</h1>{latest && userId && (<p>{userId}</p>)}
-                    </div>
-
-                </div>
-
-                {/* Center Section - Graph Area */}
-                <div className={styles.displayGraph}>
-                    {loading && <div className={styles.placeholderText}>Loading...</div>}
-                    {!loading && error && <div className={styles.placeholderText}>{error}</div>}
-                    {!loading && !error && latest && chartData.length > 0 && (
-                        <GarbageChart data={chartData} />
-                    )}
-                    {!loading && !error && latest && chartData.length === 0 && (
-                        <div className={styles.placeholderText}>No frame data available</div>
-                    )}
-                    {!loading && !error && !latest && (
-                        <div className={styles.placeholderText}>No data available</div>
-                    )}
-                </div>
-
-                {/* Bottom Section - Detailed Stats */}
-                <div className={styles.displayStats}>
-                    {loading && <div className={styles.messageText}>Loading...</div>}
-                    {!loading && error && <div className={styles.messageText}>{error}</div>}
-                    {!loading && !error && latest && (
-                        <div className={styles.statsContent}>
+                    <div className={styles.displayStats}>
+                        {loading && <div className={styles.messageText}></div>}
+                        {!loading && error && <div className={styles.messageText}>{error}</div>}
+                        {!loading && !error && latest && (
+                            <div className={styles.statsContent}>
 
                                 <div className={styles.statRow}><strong>Location:</strong> {userId}</div>
                                 <div className={styles.statRow}><strong>Video:</strong> {String(videoFilename)}</div>
@@ -273,12 +339,32 @@ export default function ViewStats(){
                                 <div className={styles.statRow}><strong>Seconds processed:</strong> {framesProcessed ?? "-"}</div>
                                 <div className={styles.statRow}><strong>Total garbage count:</strong> {totalGarbageCount ?? "-"}</div>
                                 <div className={styles.statRow}><strong>Avg garbage/frame:</strong> {avgGarbage !== null ? avgGarbage.toFixed(2) : "-"}</div>
-                        </div>
-                    )}
-                    {!loading && !error && !latest && (
-                        <div className={styles.messageText}>No information found for location: {selectedUserId || "search for a location"}</div>
-                    )}
+                            </div>
+                        )}
+                        {!loading && !error && !latest && (
+                            <div className={styles.messageText}>No information found for location: {selectedUserId || "search for a location"}</div>
+                        )}
+                    </div>
                 </div>
+                <div className={styles.graph}>
+                    <div className={styles.displayGraph}>
+                        {loading && <div className={styles.placeholderText}>Search to load data</div>}
+                        {!loading && error && <div className={styles.placeholderText}>{error}</div>}
+                        {!loading && !error && latest && chartData.length > 0 && (
+                            <GarbageChart data={chartData} />
+                        )}
+                        {!loading && !error && latest && chartData.length === 0 && (
+                            <div className={styles.placeholderText}>No frame data available</div>
+                        )}
+                        {!loading && !error && !latest && (
+                            <div className={styles.placeholderText}>No data available</div>
+                        )}
+                    </div>
+                </div>
+
+
+
+
             </main>
         </div>
     );
