@@ -20,7 +20,7 @@ export default function GarbageChart({ data }) {
                 <YAxis 
                     stroke="white"
                     tick={{ fill: 'white' }}
-                    label={{ value: 'Garbage Count', angle: -90, position: 'insideLeft', fill: 'white' }}
+                    label={{ value: 'Garbage Count', angle: -90, position: 'insideLeft', fill: 'white', dy: 50 }}
                 />
                 <Tooltip 
                     contentStyle={{ 
