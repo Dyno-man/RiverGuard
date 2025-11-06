@@ -97,7 +97,9 @@ export default function FileDrop() {
                 : (items[0]?.name || "web-upload").replace(/\W+/g, '-').slice(0, 50);
             formData.append("userId", userId);
 
-            const response = await fetch("http://192.155.92.114/api/fileUpload", {
+            // Use Next.js API route instead of hardcoded IP
+            // This avoids CORS issues and works with environment variables
+            const response = await fetch("/api/fileUpload", {
                 method: "POST",
                 body: formData
             });
