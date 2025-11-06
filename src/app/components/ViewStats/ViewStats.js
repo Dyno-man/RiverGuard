@@ -332,10 +332,19 @@ export default function ViewStats(){
                         {!loading && error && <div className={styles.messageText}>{error}</div>}
                         {!loading && !error && latest && (
                             <div className={styles.statsContent}>
+                                {/* Header: Location */}
+                                <div className={styles.statsHeader}>{userId}</div>
 
-                                <div className={styles.statRow}><strong>Location:</strong> {userId}</div>
+                                {/* Subheader: Upload date/time */}
+                                <div className={styles.statsSubHeader}>
+                                    {uploadDate ? new Date(uploadDate).toLocaleString() : "-"}
+                                </div>
+
+                                {/* Horizontal line */}
+                                <hr className={styles.statsDivider} />
+
+                                {/* Remaining stats */}
                                 <div className={styles.statRow}><strong>Video:</strong> {String(videoFilename)}</div>
-                                <div className={styles.statRow}><strong>Uploaded:</strong> {uploadDate ? new Date(uploadDate).toLocaleString() : "-"}</div>
                                 <div className={styles.statRow}><strong>Seconds processed:</strong> {framesProcessed ?? "-"}</div>
                                 <div className={styles.statRow}><strong>Total garbage count:</strong> {totalGarbageCount ?? "-"}</div>
                                 <div className={styles.statRow}><strong>Avg garbage/frame:</strong> {avgGarbage !== null ? avgGarbage.toFixed(2) : "-"}</div>
@@ -345,6 +354,7 @@ export default function ViewStats(){
                             <div className={styles.messageText}>No information found for location: {selectedUserId || "search for a location"}</div>
                         )}
                     </div>
+
                 </div>
                 <div className={styles.graph}>
                     <div className={styles.displayGraph}>

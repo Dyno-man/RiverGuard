@@ -168,7 +168,7 @@
 
 
 .statRow {
-    font-size: 0.8vw;
+    font-size: 1.5vw;
     color: white;
     line-height: 1.6;
 }
@@ -207,9 +207,9 @@
     display: flex;
     flex-direction: row;
     justify-content: center;
-    align-items: flex-start;
+    align-items: center;
     gap: 2vw;
-    width: 85%;
+    width: 95%;
 }
 
 .info {
@@ -217,7 +217,7 @@
     display: flex;
     flex-direction: column;
     justify-content: space-between;
-    height: 25vw;
+    height: 75%;
 }
 
 .graph {
@@ -225,7 +225,7 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    height: 25vw; /* equal to .info */
+    height: 75%; /* equal to .info */
 }
 
 .searchBox {
@@ -267,4 +267,25 @@
     justify-content: center;
     align-items: center;
     padding: 2vw;
+}
+.statsHeader {
+    font-size: 2.5vw;       /* bigger header */
+    font-weight: 800;
+    color: white;
+    text-align: center;
+}
+
+.statsSubHeader {
+    font-size: 1.5vw;       /* smaller subheader */
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.8);
+    text-align: center;
+    margin-bottom: 1rem;
+}
+
+.statsDivider {
+    width: 80%;             /* horizontal line width */
+    border: 0;
+    border-top: 2px solid rgba(255, 255, 255, 0.3);
+    margin: 0.5rem auto 1rem auto;
 }
