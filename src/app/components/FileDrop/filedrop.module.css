@@ -1,0 +1,247 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+.dragOverlay {
+    position: fixed;
+    inset: 0;
+    background-color: rgba(54, 150, 172, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 2rem;
+    font-weight: 600;
+    text-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    pointer-events: none;
+}
+
+.dropbox {
+    border: 2px solid white;
+    height: 35vw;
+    width: 35vw;
+    border-radius: 10px;
+    background-color: #3696ac;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    text-align: center;
+    position: relative;
+}
+
+.content {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.selectBtn {
+    background-color: white;
+    color: #010416;
+    padding: 20px 25px;
+    border-radius: 25px;
+    margin-bottom: 3rem;
+    cursor: pointer;
+    font-size: 2vw;
+    font-weight: 500;
+    transition: 0.2s;
+}
+
+.selectBtn:hover {
+    background-color: #010416;
+    color: white;
+}
+
+.hiddenInput { display: none; }
+
+.text {
+    margin-top: 8px;
+    line-height: 1.5;
+    font-size: 1.5vw;
+}
+
+.linkBtn {
+    background: none;
+    border: none;
+    color: #fff;
+    text-decoration: underline;
+    cursor: pointer;
+    font-size: 1.5vw;
+    font-weight: 500;
+    margin-left: 3px;
+    padding: 0;
+}
+
+.linkBtn:hover { color: #010416; }
+
+.popupBox {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.9);
+    background-color: #040A2C;
+    border-radius: 12px;
+    width: 70%;
+    height: 25%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    pointer-events: none;
+    transition: all 0.3s ease;
+}
+
+.popupBox.show {
+    opacity: 1;
+    transform: translate(-50%, -50%) scale(1);
+    pointer-events: all;
+}
+
+.popupBox.hide {
+    opacity: 0;
+    transform: translate(-50%, -50%) scale(0.9);
+    pointer-events: none;
+}
+
+.popupForm {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+    width: 80%;
+
+}
+
+.inputBox {
+    width: 20vw;
+    padding: 0.9rem 1.25rem;
+    border: 2px solid white;
+    border-radius: 25px;
+    background-color: rgba(255, 255, 255, 0.1);
+    color: white;
+    font-size: 1rem;
+    font-weight: 500;
+    outline: none;
+    transition: all 0.3s ease;
+}
+
+.inputBox:focus {
+    background-color: rgba(255, 255, 255, 0.15);
+    border-color: #3696AC;
+}
+
+.inputBox::placeholder {  color: rgba(255, 255, 255, 0.6); }
+
+.buttonGroup { display: flex; gap: 10px; }
+
+.btn{
+    background-color: white;
+    color: #010416;
+    padding: 6px 12px;
+    border-radius: 25px;
+    cursor: pointer;
+    font-weight: 500;
+    font-size: 1vw;
+    transition: 0.2s;
+}
+
+.btn:hover {
+    background-color: #010416;
+    color: white;
+}
+
+.addedItems {
+    display: flex;
+    flex-direction: column;
+    gap: 1vw;
+    align-items: center; /* center content horizontally */
+    justify-content: center;
+    width: 70%;
+    height: 40%;
+    border-radius: 12px;
+    padding: 2vw;
+    background-color: #040A2C;
+    transition: all 0.3s ease;
+}
+
+.itemRow {
+    display: flex;
+    align-items: center;
+    /*gap: 8px;*/
+}
+
+.itemName {
+    background-color: white;
+    color: #040A2C;
+    padding: 20px 25px;
+    border-radius: 25px;
+    text-align: center;
+    min-width: 200px;
+    font-size: 2vw;
+    font-weight: 500;
+
+    word-break: break-word;
+    white-space: normal;
+    max-width: 100%;
+    display: inline-block;
+}
+
+.deleteBtn {
+    background: none;
+    border: none;
+    color: white;
+    font-size: 1.2rem;
+    cursor: pointer;
+    padding: 0;
+}
+.spinner {
+    border: 4px solid rgba(255, 255, 255, 0.3);
+    border-top: 4px solid white;
+    border-radius: 50%;
+    width: 24px;
+    height: 24px;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+.statusBox {
+    border-radius: 8px;
+    font-size: 0.8vw;
+    text-align: center;
+    width: 10vw;
+    height:2.5vw;
+    animation: fadeIn 0.3s ease-in;
+}
+
+.statusBox.success {
+    background-color: #3696AC;
+    color: white;
+}
+
+.statusBox.error {
+    background-color: #f44336;
+    color: white;
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-5px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+
+

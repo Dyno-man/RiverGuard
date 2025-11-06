@@ -1,13 +1,28 @@
 :root {
-  --background: #ffffff;
+  --background: #040A2C;
   --foreground: #171717;
+    --font-geist-sans: "Geist Sans", Arial, sans-serif;
+    /*--font-montserrat: 'Montserrat', Arial, sans-serif;*/
 }
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
+    --background: #040A2C; /*040A2C*/
     --foreground: #ededed;
   }
+}
+.page {
+    display: flex;
+    flex-direction: column;
+    height: calc(100svh - 5rem);
+    font-family: var(--font-geist-sans), serif;
+}
+
+main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    height: calc(100vh - 5rem);
 }
 
 html,

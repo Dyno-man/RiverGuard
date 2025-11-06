@@ -1,0 +1,60 @@
+.main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 1vw;
+    width: 100%;
+    height: 100%;
+    padding: 1vw 0 1vw 0;
+}
+.tabs {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1vw;
+}
+
+.tab {
+    position: relative;
+    width: 6vw;
+    height: 3vw;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+
+}
+
+.tabText {
+    width: 95%;
+    height: 95%;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-size: 1.5vw;
+    z-index: 1;
+}
+
+.active {
+    color: white;
+    background-color: rgba(255, 255, 255, 0.3);
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+    border-radius: 2px;
+    border: 1px solid #010416;
+    transform: scale(1.2);
+}
+.divider {
+    height: 1px;
+    width: 98%;
+    background-color: rgba(255, 255, 255, 0.8);
+}
+.boardView {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 88%;
+    width: 100%;
+}

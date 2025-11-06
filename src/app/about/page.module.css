@@ -1,0 +1,262 @@
+.page {
+    width: 100vw;
+    min-height: 100vh;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-x: hidden;
+}
+
+.main {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.header {
+    font-size: 2.5vw;
+    margin: 2rem 0;
+}
+
+/* ===== Landscape Sections ===== */
+.section {
+    width: 90%;
+    min-height: 50vh;
+   border: 2px solid white;
+    border-radius: 16px;
+    padding: 3rem;
+    margin-bottom: 5vh;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    gap: 1.5rem;
+}
+
+.section h2 {
+    font-size: 2vw;
+    margin: 0;
+}
+
+.section p {
+    font-size: 1.3vw;
+    color: #ddd;
+    line-height: 1.7;
+    max-width: 80%;
+}
+
+/* ===== TEAM SECTION ===== */
+.teamSection {
+    flex-direction: column;
+}
+
+.teamContainer {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: stretch;
+    width: 100%;
+    height: 100%;
+    gap: 3rem;
+    position: relative;
+}
+
+.teamImageWrapper {
+    cursor: pointer;
+    display: inline-block;
+    border-radius: 12px; /* rounded corners */
+    overflow: hidden;    /* ensures image respects border radius */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.teamImageWrapper:hover {
+    transform: scale(1.05);
+}
+
+
+/* LEFT: 3 + 2 image grid */
+.teamGrid {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem; /* vertical gap between top and bottom rows */
+    width: 80%; /* increase width to give images more space */
+    margin: 0 auto;
+}
+
+/* Top row: 3 images spread with fixed gap */
+.topRow {
+    display: flex;
+    flex-direction: row;
+    gap: 3vw;       /* horizontal gap between top images */
+    justify-content: center;
+}
+
+/* Bottom row: 2 images centered below top row */
+.bottomRow {
+    display: flex;
+    flex-direction: row;
+    gap: 3vw;       /* horizontal gap between bottom images */
+    justify-content: center; /* centers the 2 images below top row */
+}
+
+/* Images */
+.teamImage {
+    height: 300px; /* increase size now that container is wider */
+    width: auto;
+    object-fit: contain;
+    background-color: #111;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.teamImage:hover {
+    transform: scale(1.05);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.5);
+}
+
+
+
+
+.teamItem {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    position: relative;
+}
+
+
+
+.activeImage {
+    outline: 3px solid #3696ac;
+    transform: scale(1.05);
+}
+
+.memberName {
+    margin-top: 0.5rem;
+    font-size: 1.1vw;
+    color: #bbb;
+}
+
+/* RIGHT: description + overlay iframe */
+/* RIGHT: description + overlay iframe */
+.teamDescription {
+    width: 45%; /* increase width from 35% to 45% */
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.teamDescription p {
+    font-size: 1.3vw;
+    color: #ccc;
+    line-height: 1.8;
+}
+
+/* Resume overlay on top of text */
+/* Resume overlay on top of text */
+.overlayFrame {
+    position: absolute;
+    top: -4vw;        /* move iframe to align with top of description/images */
+    right: 0;
+    width: 100%;   /* full width of description area */
+    height: 115%;  /* keep taller vertical height */
+    border: none;
+    border-radius: 12px;
+    background-color: white;
+    box-shadow: 0 0 25px rgba(0, 0, 0, 0.6);
+    animation: fadeIn 0.3s ease;
+    z-index: 5;
+}
+
+
+/* Smooth fade-in animation */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 1000px) {
+    .teamContainer {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .teamGrid {
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(3, auto);
+        width: 100%;
+    }
+
+    .teamDescription {
+        width: 100%;
+        margin-top: 2rem;
+    }
+
+    .overlayFrame {
+        position: relative;
+        width: 100%;
+        height: 400px;
+    }
+
+    .teamImage {
+        height: 180px;
+    }
+}
+/* Text + Image side by side */
+.sectionContent {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 40px;
+    margin-top: 15px;
+}
+
+/* Make the text take half width */
+.sectionContent p {
+    flex: 1;
+    font-size: 1.5vw;
+    line-height: 1.6;
+}
+
+/* Make image take half width and center it */
+.sectionImageWrapper {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+}
+
+.sectionImage {
+    border-radius: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.25);
+    max-width: 100%;
+    height: auto;
+    transition: transform 0.3s ease;
+}
+
+.sectionImage:hover {
+    transform: scale(1.03);
+}
+
+/* Stack vertically on smaller screens */
+@media (max-width: 768px) {
+    .sectionContent {
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .sectionImageWrapper {
+        margin-top: 20px;
+    }
+}
