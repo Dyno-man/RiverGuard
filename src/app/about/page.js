@@ -125,7 +125,7 @@ export default function About() {
                     <h2>Our Method</h2>
                     <div className={styles.sectionContent}>
                         <p>
-                            We utilize a computer vision model, YOLOv12n to monitor footage. This fast and lightweight model helps us pick out trash from your videos and keep track of how polluted these rivers are. Trained on two whole datasets, it is built to scan video frames and point out that pesky trash!!!
+                            We utilize a computer vision model, YOLOv12n, to monitor footage. This fast and lightweight model helps us pick out trash from your videos and keep track of how polluted these rivers are. Trained on two whole datasets, it is built to scan video frames and point out that pesky trash!!!
                         </p>
 
                         <div className={styles.sectionImageWrapper}>
