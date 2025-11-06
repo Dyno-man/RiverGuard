@@ -136,8 +136,8 @@ export default function FileDrop() {
                                 Upload Stream
                                 <input type="file" className={styles.hiddenInput} onChange={handleFileChange}/>
                             </label>
-                            <p className={styles.text}>or drop a file below, paste a URL{" "}
-                                <button type="button" className={styles.linkBtn} onClick={() => setShowUrlInput(true)}>here</button>
+                            <p className={styles.text}>or drop a file anywhere{/*below, paste a URL{" "}*/}
+                                {/*<button type="button" className={styles.linkBtn} onClick={() => setShowUrlInput(true)}>here</button>*/}
                             </p>
                         </div>
                     )}

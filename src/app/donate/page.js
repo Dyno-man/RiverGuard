@@ -10,9 +10,9 @@ export default function Donate(){
                     <h1>SUPPORT THE GUARD</h1>
                 </div>
                 <div className={styles.options}>
-                    <DonateOption tier = "Patron" price = "50"/>
+                    <DonateOption tier = "Watcher" price = "5"/>
+                    <DonateOption tier = "Protector" price = "50"/>
                     <DonateOption tier = "Guardian" price = "100"/>
-                    <DonateOption tier = "Comrade" price = "500"/>
                 </div>
             </main>
 
