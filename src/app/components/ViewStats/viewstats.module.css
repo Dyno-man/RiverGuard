@@ -52,7 +52,6 @@
     font-size: 0.8vw;
 }
 
-/* ─────────────── Search Section ─────────────── */
 /*.searchBox {*/
 /*    flex: 1;*/
 /*    min-width: 5vw;*/
@@ -88,7 +87,6 @@
     border-color: #3696AC;
 }
 
-/* ─────────────── Suggestion Dropdown ─────────────── */
 .suggestionsList {
     position: absolute;
     top: 100%;
@@ -126,7 +124,6 @@
     color: rgba(255, 255, 255, 0.7);
 }
 
-/* ─────────────── Center Graph Area ─────────────── */
 /*.displayGraph {*/
 /*    width: 100%;*/
 /*    height: 20vw;*/
@@ -147,7 +144,6 @@
     color: white;
 }
 
-/* ─────────────── Bottom Stats ─────────────── */
 /*.displayStats {*/
 /*    width: 70%;*/
 /*    height: 30%;*/
@@ -189,7 +185,6 @@
     padding: 2rem;
 }
 
-/* ─────────────── Responsive Tweaks ─────────────── */
 @media (max-width: 900px) {
     .streamBar {
         flex-direction: column;
@@ -210,23 +205,21 @@
 
 .main {
     display: flex;
-    flex-direction: row; /* side-by-side */
+    flex-direction: row;
     justify-content: center;
     align-items: flex-start;
     gap: 2vw;
     width: 85%;
 }
 
-/* Info (left) */
 .info {
     flex: 0.5;
     display: flex;
     flex-direction: column;
-    justify-content: space-between; /* ensures searchBox stays on top */
-    height: 25vw; /* fixed to match graph */
+    justify-content: space-between;
+    height: 25vw;
 }
 
-/* Graph (right) */
 .graph {
     flex: 1;
     display: flex;
@@ -235,20 +228,17 @@
     height: 25vw; /* equal to .info */
 }
 
-/* Keep searchBox above stats */
 .searchBox {
     width: 100%;
     max-width: none;
     margin-bottom: 1vw;
 }
 
-/* Match stats height to remaining space under search */
 .displayStats {
 
 
 }
 
-/* Adjust graph box for consistent height */
 .displayGraph {
     width: 100%;
     height: 100%;
@@ -265,7 +255,7 @@
 
 .displayStats {
     flex: 1;
-    margin-left: 0; /* remove offset */
+    margin-left: 0;
     width: 100%;
     height: 100%;
 
