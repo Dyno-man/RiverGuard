@@ -1,7 +1,6 @@
 .page {
     width: 100vw;
     min-height: 100vh;
-    background-color: #010416;
     color: white;
     display: flex;
     flex-direction: column;
@@ -74,7 +73,6 @@
 
 .teamImageWrapper:hover {
     transform: scale(1.05);
-    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.5);
 }
 
 

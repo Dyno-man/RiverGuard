@@ -11,7 +11,7 @@ export default function About() {
         { src: "/IMG_9761.PNG", file: "/Collin.pdf", name: "Collin" },
         { src: "/IMG_9760.JPG", file: "/Wyatt.pdf", name: "Wyatt" },
         { src: "/IMG_9761.PNG", file: "/Pedro.pdf", name: "Pedro" },
-        { src: "/GRG.jpg", file: "/files/Team5_Portfolio.pdf", name: "Geshlee" },
+        { src: "/GRG.jpg", file: "/Geshlee.pdf", name: "Geshlee" },
     ];
 
     const toggleFile = (name) => {
