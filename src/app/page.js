@@ -11,7 +11,7 @@ export default function Home() {
                 <div className={styles.welcome}>
                     <h1 className={styles.welcomeHeader}>UP WITH GUARD <br />DOWN WITH TRASH</h1>
                     <div className={styles.welcomeText}>
-                        <p>RiverGuard leverages AI-driven object detection to identify and classify river trash in real time, helping to reduce pollution and improve waterway health. Our system processes video and image data to automatically detect waste without manual monitoring. By providing accessible, actionable data, RiverGuard empowers communities and researchers to respond faster and build long-term sustainability efforts.</p>
+                        <p>RiverGuard leverages AI-driven object detection to identify river trash in real time, helping to reduce pollution and improve waterway health. Our system processes video and image data to automatically detect waste without manual monitoring. By providing accessible, actionable data, RiverGuard empowers communities and researchers to respond faster and build long-term sustainability efforts.</p>
                     </div>
                 </div>
                 <div className={styles.howToContainer}>
