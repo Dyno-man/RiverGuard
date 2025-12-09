@@ -20,6 +20,10 @@ export default function Navbar(){
            <div className={styles.list}>
                <nav className={"navbar"}>
                    <ul>
+                       <li className={pathname === "/project" ? styles.active : ""}>
+                           <Link href={"/project"}>Project</Link>
+                       </li>
+
                        <li className={pathname === "/about" ? styles.active : ""}>
                            <Link href={"/about"}>About Us</Link>
                        </li>

@@ -1,0 +1,42 @@
+.main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    min-height: auto;  /* let children grow */
+    width: 100%;
+    align-items: center;
+}
+
+
+.main h1{
+    font-size: 5vw;
+}
+.main h2{
+    font-size: 2.5vw;
+}
+.team{
+    display: flex;
+    flex-direction: row;
+}
+.teamMember{
+    display: flex;
+    flex-direction: row;
+    width: 29vw;
+}
+.headshot{
+
+}
+.bio pre{
+    white-space: pre-wrap;
+    word-wrap: break-word;
+    font-size: 0.75vw;
+}
+.report {
+    width: 55%;
+    height: 80vh;      /* visible portion of viewport */
+    min-height: 800px; /* ensures it’s tall enough */
+    border: none;
+}
+.space{
+    height: 3vw;
+}
