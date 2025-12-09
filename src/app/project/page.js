@@ -10,7 +10,7 @@ export default function Project(){
             <main className={styles.main}>
                 <h1>INDY 500 - RiverGuard</h1>
                 <h2>CS 4850: Fall 2025</h2>
-                <br/><br/>
+                <br/><br/><br/>
                 <div className={styles.team}>
                     <div className={styles.teamMember}>
                         <div className={styles.headshot}>
@@ -68,7 +68,7 @@ export default function Project(){
                     </div>
 
                 </div>
-                <br/>
+                <br/><br/>
                 <div className={styles.team}>
                     <div className={styles.teamMember}>
                         <div className={styles.headshot}>
@@ -107,14 +107,14 @@ export default function Project(){
                     </div>
 
                 </div>
-                <br/><br/>
+                <br/><br/><br/>
                 <h2>Project Report</h2>
                 <iframe
                     src={"/Indy500-RiverGuard-FinalReport.pdf"}
                     title={`Final Report`}
                     className={styles.report}
                 />
-                <br/><br/>
+                <br/><br/><br/>
                 <h2>Github</h2>
                 <h3>
 
@@ -127,7 +127,7 @@ export default function Project(){
                         RiverGuard GitHub
                     </a>
                 </h3>
-                <br/><br/>
+                <br/><br/><br/>
 
                 <h2>
 
@@ -140,7 +140,7 @@ export default function Project(){
                        Demo Video
                     </a>
                 </h2>
-                <br/><br/>
+                <br/><br/><br/>
                 <div className={styles.space}>
                     <pre>
 
