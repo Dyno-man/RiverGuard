@@ -108,13 +108,17 @@ export default function Project(){
 
                 </div>
                 <br/><br/><br/>
+                <div className={styles.docs}>
+                    <div className={styles.container}>
                 <h2>Project Report</h2>
                 <iframe
                     src={"/Indy500-RiverGuard-FinalReport.pdf"}
                     title={`Final Report`}
                     className={styles.report}
                 />
+                    </div>
                 <br/><br/><br/>
+                    <div className={styles.container}>
                 <h2>Github</h2>
                 <h3>
 
@@ -127,6 +131,7 @@ export default function Project(){
                         RiverGuard GitHub
                     </a>
                 </h3>
+                </div>
                 <br/><br/><br/>
 
                 <h2>
@@ -140,6 +145,7 @@ export default function Project(){
                        Demo Video
                     </a>
                 </h2>
+                </div>
                 <br/><br/><br/>
                 <div className={styles.space}>
                     <pre>
