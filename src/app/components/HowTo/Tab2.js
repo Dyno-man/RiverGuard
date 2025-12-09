@@ -32,7 +32,7 @@ export default function Tab2() {
                         <img
                             src="/FileDrop.gif"
                             alt="File drop animation"
-                            className={styles.gifOriginal}
+                            className={styles.gifOriginal1}
                         />
                     </div>
                 </div>
