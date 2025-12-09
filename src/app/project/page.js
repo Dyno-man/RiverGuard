@@ -33,7 +33,7 @@ export default function Project(){
                     <div className={styles.teamMember}>
                         <div className={styles.headshot}>
                             <Image
-                                src={"/GRG.JPG"}
+                                src={"/GRG.jpg"}
                                 alt={"member.name"}
                                 width={300}
                                 height={280}
